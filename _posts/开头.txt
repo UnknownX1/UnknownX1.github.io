@@ -6,4 +6,4 @@ tags: [sample, document]
 comments: true
 toc: true
 pinned: false
-content: false
+excerpt: ""

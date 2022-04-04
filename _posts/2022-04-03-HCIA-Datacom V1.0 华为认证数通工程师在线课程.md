@@ -7,7 +7,7 @@ tags: [华为]
 comments: true
 toc: true
 pinned: false
-content: false
+excerpt: ""
 ---
 
 # HCIA-Datacom V1.0 华为认证数通工程师在线课程
@@ -27,69 +27,69 @@ content: false
 
 #### 1.1.1 网络通信的基本概念
 
-![image-20220403231555624](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403231555624.png)
+![image-20220403231555624](/images/image-20220403231555624.png)
 
-![image-20220403231920757](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403231920757.png)
+![image-20220403231920757](/images/image-20220403231920757.png)
 
-![image-20220403231959110](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403231959110.png)
+![image-20220403231959110](/images/image-20220403231959110.png)
 
-![image-20220403232209192](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232209192.png)
+![image-20220403232209192](/images/image-20220403232209192.png)
 
-![image-20220403232223573](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232223573.png)
+![image-20220403232223573](/images/image-20220403232223573.png)
 
-![image-20220403232420999](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232420999.png)
+![image-20220403232420999](/images/image-20220403232420999.png)
 
 #### 1.1.2 数据通信网络基本概念
 
-![image-20220403232831806](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232831806.png)
+![image-20220403232831806](/images/image-20220403232831806.png)
 
-![image-20220403232930013](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232930013.png)
+![image-20220403232930013](/images/image-20220403232930013.png)
 
-![image-20220403232944426](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232944426.png)
+![image-20220403232944426](/images/image-20220403232944426.png)
 
-![image-20220403233022080](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233022080.png)
+![image-20220403233022080](/images/image-20220403233022080.png)
 
-![image-20220403233150144](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233150144.png)
+![image-20220403233150144](/images/image-20220403233150144.png)
 
-![image-20220403233207646](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233207646.png)
+![image-20220403233207646](/images/image-20220403233207646.png)
 
-![image-20220403233302082](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233302082.png)
+![image-20220403233302082](/images/image-20220403233302082.png)
 
-![image-20220403233342962](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233342962.png)
+![image-20220403233342962](/images/image-20220403233342962.png)
 
 ### 1.2 网络类型与网络拓补
 
 #### 1.2.1 网络类型
 
-![image-20220403233703546](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233703546.png)
+![image-20220403233703546](/images/image-20220403233703546.png)
 
-![image-20220403233744935](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233744935.png)
+![image-20220403233744935](/images/image-20220403233744935.png)
 
-![image-20220403233754896](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233754896.png)
+![image-20220403233754896](/images/image-20220403233754896.png)
 
-![image-20220403233859710](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233859710.png)
+![image-20220403233859710](/images/image-20220403233859710.png)
 
 #### 1.2.2 网络拓补
 
-![image-20220403235602794](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403235602794.png)
+![image-20220403235602794](/images/image-20220403235602794.png)
 
-![image-20220403235754019](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403235754019.png)
+![image-20220403235754019](/images/image-20220403235754019.png)
 
-![image-20220403235806784](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403235806784.png)
+![image-20220403235806784](/images/image-20220403235806784.png)
 
-![image-20220403235815265](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403235815265.png)
+![image-20220403235815265](/images/image-20220403235815265.png)
 
 #### 1.3.1 网络工程与网络工程师定义
 
-![image-20220404012649194](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404012649194.png)
+![image-20220404012649194](/images/image-20220404012649194.png)
 
-![image-20220404012732002](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404012732002.png)
+![image-20220404012732002](/images/image-20220404012732002.png)
 
-![image-20220404012836901](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404012836901.png)
+![image-20220404012836901](/images/image-20220404012836901.png)
 
-![image-20220404012848504](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404012848504.png)
+![image-20220404012848504](/images/image-20220404012848504.png)
 
-![image-20220404013254453](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404013254453.png)
+![image-20220404013254453](/images/image-20220404013254453.png)
 
 
 
@@ -103,25 +103,25 @@ content: false
 
 ### 2.1 应用和数据
 
-![image-20220404014712426](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404014712426.png)
+![image-20220404014712426](/images/image-20220404014712426.png)
 
-![image-20220404014751504](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404014751504.png)
+![image-20220404014751504](/images/image-20220404014751504.png)
 
-![image-20220404014816432](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404014816432.png)
+![image-20220404014816432](/images/image-20220404014816432.png)
 
 ### 2.2 网络参考模型与标准协议
 
 #### 2.2.1 OSI参考模型
 
-![image-20220404015030906](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404015030906.png)
+![image-20220404015030906](/images/image-20220404015030906.png)
 
-![image-20220404015040437](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404015040437.png)
+![image-20220404015040437](/images/image-20220404015040437.png)
 
 #### 2.2.2 TCP/IP参考模型与标准协议
 
-![image-20220404015208706](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404015208706.png)
+![image-20220404015208706](/images/image-20220404015208706.png)
 
-![image-20220404015223621](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404015223621.png)
+![image-20220404015223621](/images/image-20220404015223621.png)
 
-![image-20220404015237144](C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404015237144.png)
+![image-20220404015237144](/images/image-20220404015237144.png)
 
