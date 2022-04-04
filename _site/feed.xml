@@ -1,427 +1,3079 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-04T19:17:39+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">UnknownX</title><subtitle>UnknownX的博客</subtitle><entry><title type="html">LaTex渲染的说明和测试</title><link href="http://localhost:4000/math-test/" rel="alternate" type="text/html" title="LaTex渲染的说明和测试" /><published>2019-07-24T00:00:00+08:00</published><updated>2019-07-24T00:00:00+08:00</updated><id>http://localhost:4000/math-test</id><content type="html" xml:base="http://localhost:4000/math-test/"><![CDATA[<p>LaTeX渲染已经在全站头部文件引入，可以直接使用，公式块上下使用<code class="language-plaintext highlighter-rouge">$$</code>标明，内联公式则用<code class="language-plaintext highlighter-rouge">$</code>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-04T20:49:56+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">UnknownX</title><subtitle>UnknownX的博客</subtitle><entry><title type="html">Liuqid基础</title><link href="http://localhost:4000/Liuqid%E5%9F%BA%E7%A1%80/" rel="alternate" type="text/html" title="Liuqid基础" /><published>2022-04-04T00:00:00+08:00</published><updated>2022-04-04T00:00:00+08:00</updated><id>http://localhost:4000/Liuqid%E5%9F%BA%E7%A1%80</id><content type="html" xml:base="http://localhost:4000/Liuqid%E5%9F%BA%E7%A1%80/"><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td>[Liquid 模板语言中文文档</td>
+      <td>Liquid 中文网 (bootcss.com)](https://liquid.bootcss.com/)</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>最好不要让公式出现在文章摘要里。</p>
+<h1 id="简介">简介</h1>
 
-<p>Jekyll的默认文章摘要是第一段，但是我在使用中发现它选取摘要不是很稳定，因此加入了手动摘要分割线，默认为<code class="language-plaintext highlighter-rouge">&lt;!-- more --&gt;</code>，并且加入了首页摘要的字符数限制。</p>
+<p>Liquid 代码可分为 <a href="https://liquid.bootcss.com/basics/introduction/#objects"><strong>对象（object）</strong></a>、<a href="https://liquid.bootcss.com/basics/introduction/#tags"><strong>标记（tag）</strong></a> 和 <a href="https://liquid.bootcss.com/basics/introduction/#filters"><strong>过滤器（filter）</strong></a>。</p>
 
-<p>因此有特殊符号、内容的文章，建议将这些内容折叠在摘要以下。例如本文</p>
+<h2 id="对象">对象</h2>
 
-<!-- more -->
+<p><strong>对象</strong> 告诉 Liquid 在页面的哪个位置展示内容。对象和变量名由双花括号标识：<code class="language-plaintext highlighter-rouge">{{</code> 和 <code class="language-plaintext highlighter-rouge">}}</code>。</p>
 
-<p>Block math test</p>
+<p>输入</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$$
-\begin{align*}
-y = y(x,t) &amp;= A e^{i\theta} \\
-&amp;= A (\cos \theta + i \sin \theta) \\
-&amp;= A (\cos(kx - \omega t) + i \sin(kx - \omega t)) \\
-&amp;= A\cos(kx - \omega t) + i A\sin(kx - \omega t)  \\
-&amp;= A\cos \Big(\frac{2\pi}{\lambda}x - \frac{2\pi v}{\lambda} t \Big) + i A\sin \Big(\frac{2\pi}{\lambda}x - \frac{2\pi v}{\lambda} t \Big)  \\
-&amp;= A\cos \frac{2\pi}{\lambda} (x - v t) + i A\sin \frac{2\pi}{\lambda} (x - v t)
-\end{align*}
-$$
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ page.title }}
 </code></pre></div></div>
 
-\[\begin{align*}
-y = y(x,t) &amp;= A e^{i\theta} \\
-&amp;= A (\cos \theta + i \sin \theta) \\
-&amp;= A (\cos(kx - \omega t) + i \sin(kx - \omega t)) \\
-&amp;= A\cos(kx - \omega t) + i A\sin(kx - \omega t)  \\
-&amp;= A\cos \Big(\frac{2\pi}{\lambda}x - \frac{2\pi v}{\lambda} t \Big) + i A\sin \Big(\frac{2\pi}{\lambda}x - \frac{2\pi v}{\lambda} t \Big)  \\
-&amp;= A\cos \frac{2\pi}{\lambda} (x - v t) + i A\sin \frac{2\pi}{\lambda} (x - v t)
-\end{align*}\]
+<p>输出</p>
 
-<p>Inline math test <code class="language-plaintext highlighter-rouge">$\lim_{x \to \infty} \exp(-x) = 0$</code>, 
-$\lim_{x \to \infty} \exp(-x) = 0$</p>]]></content><author><name></name></author><category term="sample" /><category term="document" /><summary type="html"><![CDATA[LaTeX渲染已经在全站头部文件引入，可以直接使用，公式块上下使用$$标明，内联公式则用$. 最好不要让公式出现在文章摘要里。 Jekyll的默认文章摘要是第一段，但是我在使用中发现它选取摘要不是很稳定，因此加入了手动摘要分割线，默认为`]]></summary></entry><entry><title type="html">LOFFER使用基础教程</title><link href="http://localhost:4000/document/" rel="alternate" type="text/html" title="LOFFER使用基础教程" /><published>2019-06-02T00:00:00+08:00</published><updated>2019-06-02T00:00:00+08:00</updated><id>http://localhost:4000/document</id><content type="html" xml:base="http://localhost:4000/document/"><![CDATA[<p>LOFFER是个可以帮助你get off from LOFTER的软件（我知道这个pun很烂）。</p>
-
-<p>这是一个可以直接发布在GitHub page的Jekyll博客，你不需要编写代码或使用命令行即可配置属于你的LOFFER。</p>
-
-<p>本文为针对完全没有代码基础的朋友的基础教程。</p>
-
-<h2 id="注意">注意</h2>
-
-<p>LOFFER是一个<strong>博客模板</strong>。</p>
-
-<p>虽然意图有针对lofter用户，但是我个人狠不赞同纯外链停车操作，你整整齐齐打理个自由自在没有敏感词的个人博客有啥不好。</p>
-
-<p><strong>不要用我的Discus账户，请配置你自己的，本文档中有教程</strong></p>
-
-<p>如有疑问，请阅读<a href="https://pages.github.com/">GitHub Pages官方说明</a>。</p>
-
-<h2 id="图文教程">图文教程</h2>
-
-<p>注意以下需要上电脑操作。</p>
-
-<h3 id="第一步-使用这个template">第一步 使用这个template</h3>
-
-<p>请点击<a href="https://github.com/">GitHub</a>，注册一个GitHub账户，这是完全免费的，只要提供邮箱即可。</p>
-
-<p>现在你看到的LOFFER，是作为一个GitHub上的Repository（代码库）存在的，我将之设为可以作为template（模板），你可以用这个模板来生成一份自己的LOFFER。</p>
-
-<p>点击<a href="https://github.com/FromEndWorld/LOFFER">LOFFER</a>，进入LOFFER的GitHub Repository页面，然后点<strong>Use this template</strong>，如图所示。</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/usetemplate.png" alt="img" /></p>
-
-<p>你会进入如下页面，请给你的博客起个名字，这里只能用字母和少数特殊字符，没有关系，这个名称并不影响你的博客页面显示。</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/nameyourbolg.png" alt="img" /></p>
-
-<p>点击<strong>Create repository from template</strong>，你很快就会看到如下页面，GitHub已经将LOFFER中所有的文件复制到你的新代码库中。</p>
-
-<p>下一步，点击Settings，进入相关设置。</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Settings.png" alt="img" /></p>
-
-<p>向下拉页面，你会看到“GitHub Pages”，这是GitHub内置的网站host服务，选择master，如图所示：</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/pages.png" alt="img" /></p>
-
-<p>在几秒钟后，刷新此页面，你通常会看到这个绿色的东西（如果没看到，多等一会），你的网站已经发布成功，点击这个链接，即可查看：</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/published.png" alt="img" /></p>
-
-<p>你可能会看到网站长得很丑，这是因为样式表尚未从正确的地址加载，没关系，请继续下一步。</p>
-
-<h3 id="第二步-设置站点信息">第二步 设置站点信息</h3>
-
-<p>在你的博客的GitHub代码库页面里，选择Code，文件列表里选择_config.yml，点击打开，然后点击右上角笔形图标修改文档。</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/config.png" alt="img" /></p>
-
-<p>关于如何修改站点信息，在文件内有文档说明。</p>
-
-<p>修改完成后，点击<strong>Commit changes</strong>（提交修改）。每次修改过代码库并且提交后，GitHub Pages都会自动重新发布网站，只要等上几分钟，再次刷新你的博客页面，就会看到你的修改了。这一修改完成后，你的博客站应该可以正常显示了。</p>
-
-<p>如果刷新看不到效果，请使用“强刷新”，一般来说按ctrl+R。</p>
-
-<p>还有一点，<strong>LOFFER使用的是MIT协议，大意就是全部开源随意使用，如果你要保留自己博文的权利，请编辑LICENSE文件，写上类似“博文作者保留权利”这样的内容。</strong></p>
-
-<h3 id="第三步-发布博文">第三步 发布博文</h3>
-
-<p>在你的博客的GitHub代码库页面里，点开_posts文件夹，这里面就是你的博客文章。</p>
-
-<p>这些文章使用的格式是Markdown，文件后缀名是md，这是一种非常简单易用的有格式文本标记语言，你应该已经注意到，在LOFFER自带的示例性博文中有一篇中文的<a href="https://fromendworld.github.io/LOFFER/chinese-markdown-cheatsheet/">Markdown语法介绍</a>。</p>
-
-<p>更简单的办法是使用<a href="https://typora.io/">Typora</a>，这是一个全图形化界面，全实时预览的Markdown写作软件，非常轻量，而且免费。</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Typora.png" alt="img" /></p>
-
-<p>在发布博文前，你需要在文章的头部添加这样的内容，包括你的文章标题，发布日期，作者名，和tag等。</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-layout: post
-title: LOFFER文档
-date: 2019-06-02
-Author: 来自中世界
-categories: 
-tags: [sample, document]
-comments: true
---- 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Introduction
 </code></pre></div></div>
 
-<p>完成后，保存为.md文件，文件名是date-标题，例如 2019-06-02-document.md (注意这里的标题会成为这篇博文的链接，所以请使用字母而非中文，它不影响页面上显示的标题)，然后上传到_posts文件夹，再提交修改，很快就可以在博客上看到新文章了。</p>
+<p>上述实例中，Liquid 输出 <code class="language-plaintext highlighter-rouge">page.title</code> 对象的内容，此对象保存的是文本 <code class="language-plaintext highlighter-rouge">Introduction</code>。</p>
 
-<h3 id="可选图片怎么办">可选：图片怎么办？</h3>
+<h2 id="标记tag">标记（tag）</h2>
 
-<p>少量图片可以上传到images文件夹，然后在博文中添加。</p>
+<p><strong>标记（tag）</strong> 创造了模板的逻辑和控制流。他们由单括号加百分号标识：<code class="language-plaintext highlighter-rouge">{%</code> 和 <code class="language-plaintext highlighter-rouge">%}</code>。</p>
 
-<p>但是GitHub用来当做图床有滥用之嫌，如果你的博客以图片为主，建议选择外链图床，例如<a href="https://sm.ms/">sm.ms</a>就是和很好的选择。</p>
+<p>标记（tag）并不产生任何可见的文本输出。这意味着你可以用他们为变量赋值、创建条件和循环逻辑，并且不在页面上显示出任何 Liquid 逻辑代码。</p>
 
-<p>要寻找更适合自己的图床，敬请搜索一下。</p>
+<p>输入</p>
 
-<p>在博文中添加图片的Markdown语法是：<code class="language-plaintext highlighter-rouge">![图片名](URL)</code></p>
-
-<h3 id="可选添加评论区">可选：添加评论区</h3>
-
-<h4 id="disqus">Disqus</h4>
-
-<p>LOFFER支持Disqus评论，虽然Disqus很丑，但是它是免费的，设置起来又方便，因此大家也就不要嫌弃它。</p>
-
-<p><strong>注意：目前有一些LOFFER使用者没有修改示例站现有的Disqus配置，那么你用的就是我的Disqus站点，这样不好，不好……</strong></p>
-
-<p><strong>请根据一下教程配置你自己的站点。</strong></p>
-
-<p>首先，注册一个<a href="https://disqus.com/">Disqus</a>账户，我们可以选择这个免费方案：</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-plan.png" alt="img" /></p>
-
-<p>注册成功后，新建一个站点（site），以LOFFER为例设置步骤如下：</p>
-
-<p>首先站点名LOFFER，生成了shortname是loffer，类型可以随便选。</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-1.png" alt="img" /></p>
-
-<p>安装时选择Jekyll。</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-2.png" alt="img" /></p>
-
-<p>最后填入你的博客地址，语言可以选中文，点Complete，即可！</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-3.png" alt="img" /></p>
-
-<p>然后需要回到你的博客，修改_config.yml文件，在disqus字段填上你的shortname，commit，完成！</p>
-
-<h4 id="gitalk">Gitalk</h4>
-
-<p>LOFFER 0.2.0版本支持Gitalk评论区（在LOFFER示例站中仍然是Disqus，可以在<a href="https://himring.top/gitalk/">我的博客</a>查看Gitalk的demo），设置方法如下：</p>
-
-<p>首先，创建一个<a href="https://github.com/settings/applications/new">OAuth application</a>, 设置如图：</p>
-
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/application_settings.png" alt="img" /></p>
-
-<p>点Register后就会看到你所需要的两个值，clientID和clientSecret，把它们复制到你的_config.yml文件中相应的字段：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gitalk:
-  clientID: &lt;你的clientID&gt;
-  clientSecret: &lt;你的clientSecret&gt;
-  repo: &lt;你的repository名称&gt;
-  owner: &lt;你的GitHub用户名&gt;
-  proxy: &lt;代理地址&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if user %}
+  Hello {{ user.name }}!
+{% endif %}
 </code></pre></div></div>
 
-<p>然后commit，你的Gitalk评论区就会出现了。第一次使用的时候，需要你来进入文章页，来初始化评论区，这一操作会在你的repository上创建一个Issue，此后的评论就是对这个Issue的回复。</p>
+<p>输出</p>
 
-<p>你可以进入你的repository的Issue页面，点<strong>Unsubscribe</strong>来避免收到大量相关邮件。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello Adam!
+</code></pre></div></div>
 
-<p>注意：出于很明显的原因，最好不要同时添加Disqus和Gitalk评论区。</p>
-
-<h3 id="导入lofter的内容">导入LOFTER的内容</h3>
-
-<p>这部分由于LOFTER的导出文件十分<del>优秀</del>，需要另外解决。</p>
-
-<p>诸位可以使用我修改的脚本<a href="https://github.com/FromEndWorld/lofter2Jekyll">lofter2Jekyll</a>，功能为将lofter导出的文件转换成可用于Jekyll的MD文档，还可以将图片批量下载到本地。</p>
-
-<p>也可以使用<a href="http://underdream.lofter.com/post/38ea7d_1c5d8a983">墨问非名太太的脚本</a>，其中选择Jekyll输出即可。</p>
-
-<h2 id="致谢">致谢</h2>
+<p>标记被分为三类：</p>
 
 <ul>
-  <li><a href="https://github.com/jekyll/jekyll">Jekyll</a> - 这是本站存在的根基</li>
-  <li><a href="https://github.com/aweekj/kiko-now">Kiko-now</a> - 我首先是fork这个主题，然后再其上进行修改汉化，才有了LOFFER</li>
-  <li><a href="https://fontawesome.com/">Font Awesome</a> - 社交网络图标来自FontAwesome的免费开源内容</li>
+  <li><a href="https://liquid.bootcss.com/tags/control-flow">控制流</a></li>
+  <li><a href="https://liquid.bootcss.com/tags/iteration">迭代</a></li>
+  <li><a href="https://liquid.bootcss.com/tags/variable">变量赋值</a></li>
 </ul>
 
-<h2 id="帮助这个项目">帮助这个项目</h2>
+<p>你可以在每一类标记所对应的章节了解更多信息。</p>
 
-<p>介绍更多人来使用它，摆脱lofter自由飞翔！</p>
+<h2 id="过滤器">过滤器</h2>
 
-<p>当然如果单说写同人的话，我还是建议大家都去AO3，但是自家博客自己架也很酷炫，你还可以选择很多其他的Jeykll主题，GitHub上有很多，或者试试其他博客架设工具，例如Hexo，与代码斗其乐无穷。</p>
+<p><strong>过滤器</strong> 改变 Liquid 对象的输出。他们被用在输出上，通过一个 <code class="language-plaintext highlighter-rouge">|</code> 符号分隔。</p>
 
-<p>最后，回到<a href="https://github.com/FromEndWorld/LOFFER">LOFFER</a>，给我点一个☆吧！</p>
+<p>输入</p>
 
-<p><img src="https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/givemefive.png" alt="img" /></p>]]></content><author><name>来自中世界</name></author><category term="sample" /><category term="document" /><summary type="html"><![CDATA[LOFFER是个可以帮助你get off from LOFTER的软件（我知道这个pun很烂）。 这是一个可以直接发布在GitHub page的Jekyll博客，你不需要编写代码或使用命令行即可配置属于你的LOFFER。 本文为针对完全没有代码基础的朋友的基础教程。 注意 LOFFER是一个博客模板。 虽然意图有针对lofter用户，但是我个人狠不赞同纯外链停车操作，你整整齐齐打理个自由自在没有敏感词的个人博客有啥不好。 不要用我的Discus账户，请配置你自己的，本文档中有教程 如有疑问，请阅读GitHub Pages官方说明。 图文教程 注意以下需要上电脑操作。 第一步 使用这个template 请点击GitHub，注册一个GitHub账户，这是完全免费的，只要提供邮箱即可。 现在你看到的LOFFER，是作为一个GitHub上的Repository（代码库）存在的，我将之设为可以作为template（模板），你可以用这个模板来生成一份自己的LOFFER。 点击LOFFER，进入LOFFER的GitHub Repository页面，然后点Use this template，如图所示。 你会进入如下页面，请给你的博客起个名字，这里只能用字母和少数特殊字符，没有关系，这个名称并不影响你的博客页面显示。 点击Create repository from template，你很快就会看到如下页面，GitHub已经将LOFFER中所有的文件复制到你的新代码库中。 下一步，点击Settings，进入相关设置。 向下拉页面，你会看到“GitHub Pages”，这是GitHub内置的网站host服务，选择master，如图所示： 在几秒钟后，刷新此页面，你通常会看到这个绿色的东西（如果没看到，多等一会），你的网站已经发布成功，点击这个链接，即可查看： 你可能会看到网站长得很丑，这是因为样式表尚未从正确的地址加载，没关系，请继续下一步。 第二步 设置站点信息 在你的博客的GitHub代码库页面里，选择Code，文件列表里选择_config.yml，点击打开，然后点击右上角笔形图标修改文档。 关于如何修改站点信息，在文件内有文档说明。 修改完成后，点击Commit changes（提交修改）。每次修改过代码库并且提交后，GitHub Pages都会自动重新发布网站，只要等上几分钟，再次刷新你的博客页面，就会看到你的修改了。这一修改完成后，你的博客站应该可以正常显示了。 如果刷新看不到效果，请使用“强刷新”，一般来说按ctrl+R。 还有一点，LOFFER使用的是MIT协议，大意就是全部开源随意使用，如果你要保留自己博文的权利，请编辑LICENSE文件，写上类似“博文作者保留权利”这样的内容。 第三步 发布博文 在你的博客的GitHub代码库页面里，点开_posts文件夹，这里面就是你的博客文章。 这些文章使用的格式是Markdown，文件后缀名是md，这是一种非常简单易用的有格式文本标记语言，你应该已经注意到，在LOFFER自带的示例性博文中有一篇中文的Markdown语法介绍。 更简单的办法是使用Typora，这是一个全图形化界面，全实时预览的Markdown写作软件，非常轻量，而且免费。 在发布博文前，你需要在文章的头部添加这样的内容，包括你的文章标题，发布日期，作者名，和tag等。 --- layout: post title: LOFFER文档 date: 2019-06-02 Author: 来自中世界 categories: tags: [sample, document] comments: true --- 完成后，保存为.md文件，文件名是date-标题，例如 2019-06-02-document.md (注意这里的标题会成为这篇博文的链接，所以请使用字母而非中文，它不影响页面上显示的标题)，然后上传到_posts文件夹，再提交修改，很快就可以在博客上看到新文章了。 可选：图片怎么办？ 少量图片可以上传到images文件夹，然后在博文中添加。 但是GitHub用来当做图床有滥用之嫌，如果你的博客以图片为主，建议选择外链图床，例如sm.ms就是和很好的选择。 要寻找更适合自己的图床，敬请搜索一下。 在博文中添加图片的Markdown语法是：![图片名](URL) 可选：添加评论区 Disqus LOFFER支持Disqus评论，虽然Disqus很丑，但是它是免费的，设置起来又方便，因此大家也就不要嫌弃它。 注意：目前有一些LOFFER使用者没有修改示例站现有的Disqus配置，那么你用的就是我的Disqus站点，这样不好，不好…… 请根据一下教程配置你自己的站点。 首先，注册一个Disqus账户，我们可以选择这个免费方案： 注册成功后，新建一个站点（site），以LOFFER为例设置步骤如下： 首先站点名LOFFER，生成了shortname是loffer，类型可以随便选。 安装时选择Jekyll。 最后填入你的博客地址，语言可以选中文，点Complete，即可！ 然后需要回到你的博客，修改_config.yml文件，在disqus字段填上你的shortname，commit，完成！ Gitalk LOFFER 0.2.0版本支持Gitalk评论区（在LOFFER示例站中仍然是Disqus，可以在我的博客查看Gitalk的demo），设置方法如下： 首先，创建一个OAuth application, 设置如图： 点Register后就会看到你所需要的两个值，clientID和clientSecret，把它们复制到你的_config.yml文件中相应的字段： gitalk: clientID: &lt;你的clientID&gt; clientSecret: &lt;你的clientSecret&gt; repo: &lt;你的repository名称&gt; owner: &lt;你的GitHub用户名&gt; proxy: &lt;代理地址&gt; 然后commit，你的Gitalk评论区就会出现了。第一次使用的时候，需要你来进入文章页，来初始化评论区，这一操作会在你的repository上创建一个Issue，此后的评论就是对这个Issue的回复。 你可以进入你的repository的Issue页面，点Unsubscribe来避免收到大量相关邮件。 注意：出于很明显的原因，最好不要同时添加Disqus和Gitalk评论区。 导入LOFTER的内容 这部分由于LOFTER的导出文件十分优秀，需要另外解决。 诸位可以使用我修改的脚本lofter2Jekyll，功能为将lofter导出的文件转换成可用于Jekyll的MD文档，还可以将图片批量下载到本地。 也可以使用墨问非名太太的脚本，其中选择Jekyll输出即可。 致谢 Jekyll - 这是本站存在的根基 Kiko-now - 我首先是fork这个主题，然后再其上进行修改汉化，才有了LOFFER Font Awesome - 社交网络图标来自FontAwesome的免费开源内容 帮助这个项目 介绍更多人来使用它，摆脱lofter自由飞翔！ 当然如果单说写同人的话，我还是建议大家都去AO3，但是自家博客自己架也很酷炫，你还可以选择很多其他的Jeykll主题，GitHub上有很多，或者试试其他博客架设工具，例如Hexo，与代码斗其乐无穷。 最后，回到LOFFER，给我点一个☆吧！]]></summary></entry><entry><title type="html">Markdown语法简介</title><link href="http://localhost:4000/chinese-markdown-cheatsheet/" rel="alternate" type="text/html" title="Markdown语法简介" /><published>2013-07-16T00:00:00+08:00</published><updated>2013-07-16T00:00:00+08:00</updated><id>http://localhost:4000/chinese-markdown-cheatsheet</id><content type="html" xml:base="http://localhost:4000/chinese-markdown-cheatsheet/"><![CDATA[<p>本中文版Markdown语法简介来自博客 <a href="https://blog.shengbin.me/posts/markdown-syntax">https://blog.shengbin.me/posts/markdown-syntax</a>，并由我完成了汉化。其中的站位文字来自<a href="https://suulnnka.github.io/BullshitGenerator/index.html">狗屁不通文章生成器</a>。</p>
-
-<p><a href="http://daringfireball.net/projects/markdown/syntax">Markdown语法的完整文档在这里</a>。下面整理的这些为了方便写博客时参考。</p>
-
-<h2 id="分段与分行">分段与分行</h2>
-
-<p>以一个或多个空行来隔开段落；以两个或多个空格来段内换行。</p>
-
-<h2 id="标题">标题</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一级标题
-=============
-
-这是二级标题
--------------
-
-# 一级标题
-
-##  二级标题
-
-######  六级标题
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "/my/fancy/url" | append: ".html" }}
 </code></pre></div></div>
 
-<h2 id="引用">引用</h2>
+<p>输出</p>
 
-<p>在每一行前面写一个<code class="language-plaintext highlighter-rouge">&gt;</code>：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; 这是一个引用段落。
-&gt; 一般来讲，我们都必须务必慎重的考虑考虑。 了解清楚标记语言到底是一种怎么样的存在，是解决一切问题的关键。 
-&gt; 一般来说， 莎士比亚曾经说过，抛弃时间的人，时间也抛弃他。这似乎解答了我的疑惑。 
-&gt;
-&gt; 笛卡儿曾经提到过，读一切好书，就是和许多高尚的人谈话。带着这句话，我们还要更加慎重的审视这个问题： 
-&gt; 现在，解决标记语言的问题，是非常非常重要的。 
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/my/fancy/url.html
 </code></pre></div></div>
 
-<p>效果：</p>
+<p>多个过滤器可以共同作用于同一个输出，并按照从左到右的顺序执行。</p>
 
-<blockquote>
-  <p>这是一个引用段落。
-一般来讲，我们都必须务必慎重的考虑考虑。 了解清楚标记语言到底是一种怎么样的存在，是解决一切问题的关键。 
-一般来说， 莎士比亚曾经说过，抛弃时间的人，时间也抛弃他。这似乎解答了我的疑惑。</p>
+<p>输入</p>
 
-  <p>笛卡儿曾经提到过，读一切好书，就是和许多高尚的人谈话。带着这句话，我们还要更加慎重的审视这个问题： 
-现在，解决标记语言的问题，是非常非常重要的。</p>
-</blockquote>
-
-<p>或者在每一段前面写一个<code class="language-plaintext highlighter-rouge">&gt;</code>：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; 这是一个引用段落。一般来讲，我们都必须务必慎重的考虑考虑。 了解清楚标记语言到底是一种怎么样的存在，是解决一切问题的关键。 一般来说， 莎士比亚曾经说过，抛弃时间的人，时间也抛弃他。这似乎解答了我的疑惑。
-
-&gt; 笛卡儿曾经提到过，读一切好书，就是和许多高尚的人谈话。带着这句话，我们还要更加慎重的审视这个问题： 现在，解决标记语言的问题，是非常非常重要的。 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "adam!" | capitalize | prepend: "Hello " }}
 </code></pre></div></div>
 
-<h2 id="多重引用">多重引用</h2>
+<p>输出</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; 这是第一层引用
-&gt;
-&gt; &gt; 这是第二层引用
-&gt;
-&gt; 回到第一层
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello Adam!
 </code></pre></div></div>
 
-<p>效果：</p>
+<h1 id="操作符">操作符</h1>
 
-<blockquote>
-  <p>这是第一层引用</p>
+<p>Liquid 包含了大量逻辑（logical）和比较操作符（comparison operator）。</p>
 
-  <blockquote>
-    <p>这是第二层引用</p>
-  </blockquote>
+<h2 id="基本操作符">基本操作符</h2>
 
-  <p>回到第一层</p>
-</blockquote>
+<table>
+  <thead>
+    <tr>
+      <th><code class="language-plaintext highlighter-rouge">==</code></th>
+      <th>相等</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">!=</code></td>
+      <td>不相等</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&gt;</code></td>
+      <td>大于</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;</code></td>
+      <td>小于</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&gt;=</code></td>
+      <td>大于或等于</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;=</code></td>
+      <td>小于或等于</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">or</code></td>
+      <td>逻辑或</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">and</code></td>
+      <td>逻辑与</td>
+    </tr>
+  </tbody>
+</table>
 
-<h2 id="列表">列表</h2>
+<p>例如：</p>
 
-<p>列表项占一行，以*、+、-开头即可：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*   甲子
-*   乙丑
-*   丙寅
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if product.title == "Awesome Shoes" %}
+  These shoes are awesome!
+{% endif %}
 </code></pre></div></div>
 
-<p>效果：</p>
+<p>可以在一个标记（tag）中使用多个操作符：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if product.type == "Shirt" or product.type == "Shoes" %}
+  This is a shirt or a pair of shoes.
+{% endif %}
+</code></pre></div></div>
+
+<h2 id="contains包含">contains（包含）</h2>
+
+<p><code class="language-plaintext highlighter-rouge">contains</code> 用于检查在一个字符串中是否存在某个子串。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if product.title contains 'Pack' %}
+  This product's title contains the word Pack.
+{% endif %}
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">contains</code> 还可以用于检查一个字符串数组中是否存在某个字符串。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if product.tags contains 'Hello' %}
+  This product has been tagged with 'Hello'.
+{% endif %}
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">contains</code> 只能用于搜索字符串。你不能将其用于从一个对象数组中检查是否存在某个对象。</p>
+
+<h1 id="真值与假值">真值与假值</h1>
+
+<p>编程时，在条件判断中任何返回 <code class="language-plaintext highlighter-rouge">true</code> 的都被叫做 <strong>真值（truthy）</strong>。任何返回 <code class="language-plaintext highlighter-rouge">false</code> 的都被叫做 <strong>假值（falsy）</strong>。所有的对象（object）类型都可以被描述为真值（truthy）或假值（falsy）。</p>
 
 <ul>
-  <li>甲子</li>
-  <li>乙丑</li>
-  <li>丙寅</li>
+  <li><a href="https://liquid.bootcss.com/basics/truthy-and-falsy/#truthy">Truthy</a></li>
+  <li><a href="https://liquid.bootcss.com/basics/truthy-and-falsy/#falsy">Falsy</a></li>
+  <li><a href="https://liquid.bootcss.com/basics/truthy-and-falsy/#summary">Summary</a></li>
 </ul>
 
-<p>有序列表只需要将上述标记符换成数字加句点。而且顺序由书写顺序决定，与数字无关，但数字需要从1开始。例如：</p>
+<h2 id="真值truthy">真值（Truthy）</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.  天
-3.  地
-2.  人
+<p>除了 <code class="language-plaintext highlighter-rouge">nil</code> 和 <code class="language-plaintext highlighter-rouge">false</code> 之外的所有值都是真值。</p>
 
+<p>如下例，字符串 “Tobi” 虽不是布尔类型，但是其在条件判断时被当做真值（truthy）：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign tobi = "Tobi" %}
+
+{% if tobi %}
+  This condition will always be true.
+{% endif %}
 </code></pre></div></div>
 
-<p>效果：</p>
+<p><a href="https://liquid.bootcss.com/basics/types/#string">字符串（String）</a>，即便是空字符串，也是真值（truthy）。如下例，如果 <code class="language-plaintext highlighter-rouge">settings.fp_heading</code> 是个空字符串将会输出空 HTML 标签：</p>
 
-<ol>
-  <li>天</li>
-  <li>地</li>
-  <li>人</li>
-</ol>
+<p>输入</p>
 
-<p>每一个列表项可以多行：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*  而这些并不是完全重要，更加重要的问题是，可是，即使是这样，标记语言的出现仍然代表了一定的意义。叔本华说过一句富有哲理的话，意志是一个强壮的盲人，倚靠在明眼的跛子肩上。这启发了我，要想清楚，标记语言，到底是一种怎么样的存在。
-*   伏尔泰说过一句富有哲理的话，坚持意志伟大的事业需要始终不渝的精神。这启发了我，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。那么，标记语言因何而发生？了解清楚标记语言到底是一种怎么样的存在，是解决一切问题的关键。而这些并不是完全重要，更加重要的问题是，就我个人来说，标记语言对我的意义，不能不说非常重大。就我个人来说，标记语言对我的意义，不能不说非常重大。我们不得不面对一个非常尴尬的事实，那就是，总结的来说，标记语言因何而发生？
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if settings.fp_heading %}
+  &lt;h1&gt;{{ settings.fp_heading }}&lt;/h1&gt;
+{% endif %}
 </code></pre></div></div>
 
-<p>效果：</p>
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;h1&gt;&lt;/h1&gt;
+</code></pre></div></div>
+
+<h2 id="假值falsy">假值（Falsy）</h2>
+
+<p>在 Liquid 中，<a href="https://liquid.bootcss.com/basics/types/#nil"><code class="language-plaintext highlighter-rouge">nil</code></a> 和 <a href="https://liquid.bootcss.com/basics/types/#boolean"><code class="language-plaintext highlighter-rouge">false</code></a> 是假值。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>下表总结了在 Liquid 中什么是真值什么是假值。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">真值（truthy）</th>
+      <th style="text-align: center">假值（falsy）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">true</td>
+      <td style="text-align: center">•</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">false</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">•</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">nil</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">•</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string</td>
+      <td style="text-align: center">•</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">empty string</td>
+      <td style="text-align: center">•</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">•</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">integer</td>
+      <td style="text-align: center">•</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">float</td>
+      <td style="text-align: center">•</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">array</td>
+      <td style="text-align: center">•</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">empty array</td>
+      <td style="text-align: center">•</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">page</td>
+      <td style="text-align: center">•</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">EmptyDrop</td>
+      <td style="text-align: center">•</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="数据类型">数据类型</h1>
+
+<p>Liquid 对象的类型可以是以下五种：</p>
 
 <ul>
-  <li>而这些并不是完全重要，更加重要的问题是，可是，即使是这样，标记语言的出现仍然代表了一定的意义。叔本华说过一句富有哲理的话，意志是一个强壮的盲人，倚靠在明眼的跛子肩上。这启发了我，要想清楚，标记语言，到底是一种怎么样的存在。</li>
-  <li>伏尔泰说过一句富有哲理的话，坚持意志伟大的事业需要始终不渝的精神。这启发了我，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。那么，标记语言因何而发生？了解清楚标记语言到底是一种怎么样的存在，是解决一切问题的关键。而这些并不是完全重要，更加重要的问题是，就我个人来说，标记语言对我的意义，不能不说非常重大。就我个人来说，标记语言对我的意义，不能不说非常重大。我们不得不面对一个非常尴尬的事实，那就是，总结的来说，标记语言因何而发生？</li>
+  <li><a href="https://liquid.bootcss.com/basics/types/#string">String</a></li>
+  <li><a href="https://liquid.bootcss.com/basics/types/#number">Number</a></li>
+  <li><a href="https://liquid.bootcss.com/basics/types/#boolean">Boolean</a></li>
+  <li><a href="https://liquid.bootcss.com/basics/types/#nil">Nil</a></li>
+  <li><a href="https://liquid.bootcss.com/basics/types/#array">Array</a></li>
 </ul>
 
-<h2 id="代码块">代码块</h2>
+<p>你可以通过 <a href="https://liquid.bootcss.com/tags/variable/#assign">assign</a> 或 <a href="https://liquid.bootcss.com/tags/variable/#capture">capture</a> 标记来初始化 Liquid 变量。</p>
 
-<p>每一行前面缩进四个或以上个空格，就认为是开始了一段代码块。代码块内原样输出。</p>
+<h2 id="string字符串">String（字符串）</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个普通段落
+<p>将变量的值包裹在单引号或双引号之中就声明了一个字符串：</p>
 
-    这是一个代码块
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_string = "Hello World!" %}
+</code></pre></div></div>
+
+<h2 id="number数字">Number（数字）</h2>
+
+<p>数字类型包括浮点数和整数：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_int = 25 %}
+{% assign my_float = 39.756 %}
+</code></pre></div></div>
+
+<h2 id="boolean布尔">Boolean（布尔）</h2>
+
+<p>Booleans 类型只能是 <code class="language-plaintext highlighter-rouge">true</code> 或 <code class="language-plaintext highlighter-rouge">false</code>。布尔值千万不能加引号，否则就成为字符串了。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign foo = true %}
+{% assign bar = false %}
+</code></pre></div></div>
+
+<h2 id="nil空">Nil（空）</h2>
+
+<p>Nil 是一个特殊的空值，当 Liquid 代码没有可输出的结果时将返回 Nil。他并<strong>不是</strong>由 “nil” 这个三个字符组成的字符串。</p>
+
+<p>在 <code class="language-plaintext highlighter-rouge">if</code> 条件判断和其他 Liquid 标记（tag）判断语句中，Nil <a href="https://liquid.bootcss.com/basics/truthy-and-falsy">被当做 false</a> 。</p>
+
+<p>下例中，如果 user 不存在（也就是 <code class="language-plaintext highlighter-rouge">user</code> 返回 <code class="language-plaintext highlighter-rouge">nil</code>），Liquid 不输出问候语：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if user %}
+  Hello {{ user.name }}!
+{% endif %}
+</code></pre></div></div>
+
+<p>如果 Liquid 标记（tag）或输出返回的是 <code class="language-plaintext highlighter-rouge">nil</code>，页面上将不会有任何内容。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The current user is {{ user.name }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The current user is
+</code></pre></div></div>
+
+<h2 id="array数组">Array（数组）</h2>
+
+<p>数组能够存储一组任意类型的变量。</p>
+
+<h3 id="访问数组中的项">访问数组中的项</h3>
+
+<p>通过 <a href="https://liquid.bootcss.com/tags/iteration">迭代标记（iteration tag）</a> 可以访问数组中的所有项。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- if site.users = "Tobi", "Laura", "Tetsuro", "Adam" --&gt;
+{% for user in site.users %}
+  {{ user }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tobi Laura Tetsuro Adam
+</code></pre></div></div>
+
+<h3 id="访问数组中的特定项">访问数组中的特定项</h3>
+
+<p>利用方括号 <code class="language-plaintext highlighter-rouge">[</code> <code class="language-plaintext highlighter-rouge">]</code> 能够访问数组中的特定项。数组的索引从 0 开始。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- if site.users = "Tobi", "Laura", "Tetsuro", "Adam" --&gt;
+{{ site.users[0] }}
+{{ site.users[1] }}
+{{ site.users[3] }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tobi
+Laura
+Adam
+</code></pre></div></div>
+
+<h3 id="初始化数组">初始化数组</h3>
+
+<p>你无法只通过 Liquid 语法初始化一个数组。</p>
+
+<p>然而，你可以利用 <a href="https://liquid.bootcss.com/filters/split">split</a> 过滤器将一个字符串分割为一个子字符串数组。</p>
+
+<h1 id="liquid-的各种分支">Liquid 的各种分支</h1>
+
+<p>Liquid 是一门灵活、安全的模版语言，被用于许多不同环境中。Liquid 被创建之初是用在 <a href="https://www.shopify.com/">Shopify</a> 商店系统中的，后来也被广泛用于 <a href="https://jekyllrb.com/">Jekyll</a> 网站中。随着时间的推移，Shopify 和 Jekyll 分别为 Liquid 添加了针对各自用途的对象（object）、标记（tag）和过滤器（filter）。目前最流行的 Liquid 版本包括 <strong>Liquid</strong>、<strong>Shopify Liquid</strong> 和 <strong>Jekyll Liquid</strong>。</p>
+
+<p>本站点托管的是最新版本的 <strong>Liquid</strong> 的文档，包括了 beta 和 release candidate 版本中包含的特性，也就是说，是独立于 Shopify 和 Jekyll 之外的 Liquid。如果你是从 Liquid 仓库下载的代码或者安装的的是 <a href="https://rubygems.org/gems/liquid">gem</a> 包，你所选择的 Liquid 版本对应你能够访问的对象（object）、标记（tag）和过滤器。</p>
+
+<h2 id="shopify">Shopify</h2>
+
+<p>Shopify 一直采用的都是最新版本的 Liquid，并且 Shopify 会针对 merchants’ store 为 Liquid 添加大量的对象（object）、标记（tag）和过滤器。这些新增的内容包括代表商店（store）、产品（product）和顾客信息的对象，以及用于展示商店数据和操作产品照片的过滤器。</p>
+
+<p>Shopify 版本的 Liquid 所对应的文档在 <a href="https://help.shopify.com/themes/liquid">Shopify Help Center</a>。如果你希望尝试 Shopify 版本的 Liquid，你可以<a href="https://www.shopify.com/signup">试用 Shopify</a> 或者使用类似 <a href="http://droppen.org/">DropPen</a> 的工具。</p>
+
+<h2 id="jekyll">Jekyll</h2>
+
+<p><a href="https://jekyllrb.com/">Jekyll</a> 是一个静态网站生成器，一个用于将模版和内容合并到一起从而创建网站的命令行工具。ekyll 将 Liquid 作为自身的模版语言，并且添加了许多对象（object）、标记（tag）和过滤器（filter）。这些新增内容包括代表内容页面的对象、用于在页面中引入内容片段的标记（tag），以及用于操作字符串和 URL 的过滤器。</p>
+
+<p>Jekyll 还是 <a href="https://pages.github.com/">GitHub Pages</a> 的底层引擎。GitHub Pages 是一项网站托管服务，允许你将 Jekyll 网站推送到 GitHub 仓库，最终得到一个发布到公网的站点。本网站就是由 GitHub Pages 托管的。</p>
+
+<p>Jekyll 可能使用的不是最新版本的 Liquid。也就意味着本文档所列出的标记（tag）和过滤器不能在 Jekyll 中使用。通常 Jekyll 项目使用的是稳定版的 Liquid，而不使用 beta 或 release candidate 版本。通过 <a href="https://rubygems.org/gems/jekyll">Jekyll 的 gem 信息也</a> 可查看 Jekyll 所依赖的所有 gem 包，从而可以了解 Jekyll 所使用的 Liquid 版本。</p>
+
+<p>Jekyll 版本的 Liquid 的文档在 <a href="http://jekyllrb.com/docs/templates/">Templates section of Jekyll’s documentation</a>。如果你希望尝试 Jekyll 版本的 Liquid，你可以克隆 Jekyll 项目或者安装 Jekyll 的 gem 包，然后在静态网站中测试 Liquid。</p>
+
+<h1 id="控制输出的空白符">控制输出的空白符</h1>
+
+<p>在 Liquid 模版中，你可以将连字符放在标记（tag）中，例如 <code class="language-plaintext highlighter-rouge">{{-</code>、<code class="language-plaintext highlighter-rouge">-}}</code>、<code class="language-plaintext highlighter-rouge">{%-</code> 和 <code class="language-plaintext highlighter-rouge">-%}</code>，用于将标记（tag）渲染之后的输出内容的左侧或右侧的空拍符剔除。</p>
+
+<p>通常，即使不输出文本，模版中的任何 Liquid 表达式仍然会在渲染之后输出的 HTML 中包含一个空行：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_variable = "tomato" %}
+{{ my_variable }}
+</code></pre></div></div>
+
+<p>请注意渲染之后输出的 “tomato” 字符前面包含了一个空行：</p>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tomato
+</code></pre></div></div>
+
+<p>通过为 <code class="language-plaintext highlighter-rouge">assign</code> 标记（tag）添加连字符，可以将渲染之后所输出的空拍符删除：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- assign my_variable = "tomato" -%}
+{{ my_variable }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tomato
+</code></pre></div></div>
+
+<p>如果你不希望任何标记（tag）被渲染之后所输出的内容有任何空白符，只需在所有标记（tag）两侧全部添加连字符即可，例如 (<code class="language-plaintext highlighter-rouge">{%-</code> 和 <code class="language-plaintext highlighter-rouge">-%}</code>)：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign username = "John G. Chalmers-Smith" %}
+{% if username and username.size &gt; 10 %}
+  Wow, {{ username }}, you have a long name!
+{% else %}
+  Hello there!
+{% endif %}
+</code></pre></div></div>
+
+<p>不做空白符控制的输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Wow, John G. Chalmers-Smith, you have a long name!
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- assign username = "John G. Chalmers-Smith" -%}
+{%- if username and username.size &gt; 10 -%}
+  Wow, {{ username }}, you have a long name!
+{%- else -%}
+  Hello there!
+{%- endif -%}
+</code></pre></div></div>
+
+<p>带有空白符控制的输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Wow, John G. Chalmers-Smith, you have a long name!
+</code></pre></div></div>
+
+<h1 id="注释">注释</h1>
+
+<p><code class="language-plaintext highlighter-rouge">comment</code> 标记让你能够在 Liquid 模板中书写的内容不被输出。任何书写在 <code class="language-plaintext highlighter-rouge">comment</code> 起始与结束标记之间的内容都不会被输出，如果是 Liquid 代码则不会被执行。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Anything you put between {% comment %} and {% endcomment %} tags
+is turned into a comment.
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Anything you put between  tags
+is turned into a comment.
+</code></pre></div></div>
+
+<h1 id="控制流">控制流</h1>
+
+<p>控制流标记（control flow tag）能够根据编程逻辑改变 Liquid 输出的信息。</p>
+
+<h2 id="if">if</h2>
+
+<p>只有当某个条件为 <code class="language-plaintext highlighter-rouge">true</code> 时才执行一段代码。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if product.title == 'Awesome Shoes' %}
+  These shoes are awesome!
+{% endif %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>These shoes are awesome!
+</code></pre></div></div>
+
+<h2 id="unless">unless</h2>
+
+<p>与 <code class="language-plaintext highlighter-rouge">if</code> 相对 – 只有当某个条件<strong>不</strong>成立时才执行一段代码。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% unless product.title == 'Awesome Shoes' %}
+  These shoes are not awesome.
+{% endunless %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>These shoes are not awesome.
+</code></pre></div></div>
+
+<p>和如下实例的执行结果一致：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if product.title != 'Awesome Shoes' %}
+  These shoes are not awesome.
+{% endif %}
+</code></pre></div></div>
+
+<h2 id="elsif--else">elsif / else</h2>
+
+<p>为 <code class="language-plaintext highlighter-rouge">if</code> 或 <code class="language-plaintext highlighter-rouge">unless</code> 添加更多状态判断。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- If customer.name = 'anonymous' --&gt;
+{% if customer.name == 'kevin' %}
+  Hey Kevin!
+{% elsif customer.name == 'anonymous' %}
+  Hey Anonymous!
+{% else %}
+  Hi Stranger!
+{% endif %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hey Anonymous!
+</code></pre></div></div>
+
+<h2 id="casewhen">case/when</h2>
+
+<p>创建一个开关表达式，用于将一个变量和多个不同值进行比较。<code class="language-plaintext highlighter-rouge">case</code> 用于初始化一个开关表达式，<code class="language-plaintext highlighter-rouge">when</code> 用于比较他们的值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign handle = 'cake' %}
+{% case handle %}
+  {% when 'cake' %}
+     This is a cake
+  {% when 'cookie' %}
+     This is a cookie
+  {% else %}
+     This is not a cake nor a cookie
+{% endcase %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is a cake
+</code></pre></div></div>
+
+<h1 id="迭代循环">迭代／循环</h1>
+
+<p>迭代（或循环）标记（iteration tag）用于重复运行一段代码。</p>
+
+<h2 id="for">for</h2>
+
+<p>重复运行一段代码。<code class="language-plaintext highlighter-rouge">for</code> 循环中所能够使用的属性请参考 <a href="https://docs.shopify.com/themes/liquid/objects/for-loops">forloop (object)</a>。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {% for product in collection.products %}
+    {{ product.title }}
+  {% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hat shirt pants
+</code></pre></div></div>
+
+<h3 id="break">break</h3>
+
+<p>循环过程中若干遇到 <code class="language-plaintext highlighter-rouge">break</code> 标记（tag）即停止循环。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% for i in (1..5) %}
+  {% if i == 4 %}
+    {% break %}
+  {% else %}
+    {{ i }}
+  {% endif %}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 2 3
+</code></pre></div></div>
+
+<h3 id="continue">continue</h3>
+
+<p>循环过程中若遇到 <code class="language-plaintext highlighter-rouge">continue</code> 标记（tag）则跳出当前循环。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% for i in (1..5) %}
+  {% if i == 4 %}
+    {% continue %}
+  {% else %}
+    {{ i }}
+  {% endif %}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 2 3   5
+</code></pre></div></div>
+
+<h2 id="for-parameters">for (parameters)</h2>
+
+<h3 id="limit">limit</h3>
+
+<p>限定循环执行的次数。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- if array = [1,2,3,4,5,6] --&gt;
+{% for item in array limit:2 %}
+  {{ item }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 2
+</code></pre></div></div>
+
+<h3 id="offset">offset</h3>
+
+<p>从指定索引号开始执行循环。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- if array = [1,2,3,4,5,6] --&gt;
+{% for item in array offset:2 %}
+  {{ item }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3 4 5 6
+</code></pre></div></div>
+
+<h3 id="range">range</h3>
+
+<p>定义循环执行的范围。可利用数字或变量来定义此执行范围。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% for i in (3..5) %}
+  {{ i }}
+{% endfor %}
+
+{% assign num = 4 %}
+{% for i in (1..num) %}
+  {{ i }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3 4 5
+1 2 3 4
+</code></pre></div></div>
+
+<h3 id="reversed">reversed</h3>
+
+<p>反转循环的执行顺序。注意和 <code class="language-plaintext highlighter-rouge">reverse</code> 过滤器（filter）的拼写是不同的。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- if array = [1,2,3,4,5,6] --&gt;
+{% for item in array reversed %}
+  {{ item }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6 5 4 3 2 1
+</code></pre></div></div>
+
+<h2 id="cycle">cycle</h2>
+
+<p>循环一组字符串并按照它们传入的顺序将其输出。每次调用 <code class="language-plaintext highlighter-rouge">cycle</code> 时，传入的参数中的下一个字符串将被输出。</p>
+
+<p><code class="language-plaintext highlighter-rouge">cycle</code> 必须用在 <a href="https://liquid.bootcss.com/tags/iteration/#for">for</a> 循环中。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% cycle 'one', 'two', 'three' %}
+{% cycle 'one', 'two', 'three' %}
+{% cycle 'one', 'two', 'three' %}
+{% cycle 'one', 'two', 'three' %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>one
+two
+three
+one
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">cycle</code> 的使用场景包括：</p>
+
+<ul>
+  <li>对表格中的奇数／偶数行输出相应的类（class）</li>
+  <li>在一行中的最后一列输出一个唯一的类（class）</li>
+</ul>
+
+<h2 id="cycle-parameters">cycle (parameters)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">cycle</code> 能够接受一个叫做 <code class="language-plaintext highlighter-rouge">cycle group</code> 的参数，以便满足你在模版中需要使用多个 <code class="language-plaintext highlighter-rouge">cycle</code> 代码块的情况。如果没有为 cycle group 命名，那么将会假定带有相同参数的 cycle 调用属于同一个组（group）。</p>
+
+<h2 id="tablerow">tablerow</h2>
+
+<p>生成一个 HTML 表格。必须用 <code class="language-plaintext highlighter-rouge">&lt;table&gt;</code> 和 <code class="language-plaintext highlighter-rouge">&lt;/table&gt;</code> 这两个 HTML 标签将其包裹起来。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;table&gt;
+{% tablerow product in collection.products %}
+  {{ product.title }}
+{% endtablerow %}
+&lt;/table&gt;
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;table&gt;
+  &lt;tr class="row1"&gt;
+    &lt;td class="col1"&gt;
+      Cool Shirt
+    &lt;/td&gt;
+    &lt;td class="col2"&gt;
+      Alien Poster
+    &lt;/td&gt;
+    &lt;td class="col3"&gt;
+      Batman Poster
+    &lt;/td&gt;
+    &lt;td class="col4"&gt;
+      Bullseye Shirt
+    &lt;/td&gt;
+    &lt;td class="col5"&gt;
+      Another Classic Vinyl
+    &lt;/td&gt;
+    &lt;td class="col6"&gt;
+      Awesome Jeans
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre></div></div>
+
+<h2 id="tablerow-parameters">tablerow (parameters)</h2>
+
+<h3 id="cols">cols</h3>
+
+<p>定义表格应当有多少列。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% tablerow product in collection.products cols:2 %}
+  {{ product.title }}
+{% endtablerow %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;table&gt;
+  &lt;tr class="row1"&gt;
+    &lt;td class="col1"&gt;
+      Cool Shirt
+    &lt;/td&gt;
+    &lt;td class="col2"&gt;
+      Alien Poster
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr class="row2"&gt;
+    &lt;td class="col1"&gt;
+      Batman Poster
+    &lt;/td&gt;
+    &lt;td class="col2"&gt;
+      Bullseye Shirt
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr class="row3"&gt;
+    &lt;td class="col1"&gt;
+      Another Classic Vinyl
+    &lt;/td&gt;
+    &lt;td class="col2"&gt;
+      Awesome Jeans
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre></div></div>
+
+<h4 id="limit-1">limit</h4>
+
+<p>在执行到指定的脚标（index）之后退出 tablerow 。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% tablerow product in collection.products cols:2 limit:3 %}
+  {{ product.title }}
+{% endtablerow %}
+</code></pre></div></div>
+
+<h3 id="offset-1">offset</h3>
+
+<p>在指定的脚标（index）之后开始执行 tablerow 。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% tablerow product in collection.products cols:2 offset:3 %}
+  {{ product.title }}
+{% endtablerow %}
+</code></pre></div></div>
+
+<h3 id="range-1">range</h3>
+
+<p>定义循环执行的范围。可利用数字和变量来定义执行范围。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!--variable number example--&gt;
+
+{% assign num = 4 %}
+&lt;table&gt;
+{% tablerow i in (1..num) %}
+  {{ i }}
+{% endtablerow %}
+&lt;/table&gt;
+
+&lt;!--literal number example--&gt;
+
+&lt;table&gt;
+{% tablerow i in (3..5) %}
+  {{ i }}
+{% endtablerow %}
+&lt;/table&gt;
+</code></pre></div></div>
+
+<h1 id="原始内容">原始内容</h1>
+
+<p><code class="language-plaintext highlighter-rouge">raw</code> 标记临时禁止处理其所包围的代码。如果输出的内容与 Liquid 模板语言有冲突时（例如 Mustache、Handlebars 模板语言）可以避免冲突。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  In Handlebars, {{ this }} will be HTML-escaped, but
+  {{{ that }}} will not.
 
 </code></pre></div></div>
 
-<p>效果：</p>
+<p>输出</p>
 
-<p>这是一个普通段落</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个代码块
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>In Handlebars, {{ this }} will be HTML-escaped, but {{{ that }}} will not.
 </code></pre></div></div>
 
-<h2 id="横线">横线</h2>
+<h1 id="变量">变量</h1>
 
-<p>三个或更多个<code class="language-plaintext highlighter-rouge">*</code>、<code class="language-plaintext highlighter-rouge">-</code>（它们之间可以有空格）会产生横线：</p>
+<p>变量标记（variable tag）用于创建新的 Liquid 变量。</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* * *
+<h2 id="assign">assign</h2>
 
+<p>创建一个新变量。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_variable = false %}
+{% if my_variable != true %}
+  This statement is valid.
+{% endif %}
 </code></pre></div></div>
 
-<p>效果：</p>
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  This statement is valid.
+</code></pre></div></div>
+
+<p>将变量用 <code class="language-plaintext highlighter-rouge">"</code> 包裹之后则将其当做字符串对待。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign foo = "bar" %}
+{{ foo }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bar
+</code></pre></div></div>
+
+<h2 id="capture">capture</h2>
+
+<p>将 <code class="language-plaintext highlighter-rouge">capture</code> 开始与结束标记之间的字符串捕获之后赋值给一个变量。通过 <code class="language-plaintext highlighter-rouge">{% capture %}</code> 创建的变量都是字符串。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% capture my_variable %}I am being captured.{% endcapture %}
+{{ my_variable }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I am being captured.
+</code></pre></div></div>
+
+<p>使用 <code class="language-plaintext highlighter-rouge">capture</code> 时，你还可以利用 <code class="language-plaintext highlighter-rouge">assign</code> 创建的其他变量创造一个复杂的字符串。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign favorite_food = 'pizza' %}
+{% assign age = 35 %}
+
+{% capture about_me %}
+I am {{ age }} and my favorite food is {{ favorite_food }}.
+{% endcapture %}
+
+{{ about_me }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I am 35 and my favourite food is pizza.
+</code></pre></div></div>
+
+<h2 id="increment">increment</h2>
+
+<p>创建一个全新的数值变量，并且在后续每次调用时将此变量的值加 1。初始值是 0。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% increment my_counter %}
+{% increment my_counter %}
+{% increment my_counter %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+1
+2
+</code></pre></div></div>
+
+<p>通过 <code class="language-plaintext highlighter-rouge">increment</code> 标记（tag）创建的变量与通过 <code class="language-plaintext highlighter-rouge">assign</code> 或 <code class="language-plaintext highlighter-rouge">capture</code> 创建的变量是相互独立的。</p>
+
+<p>在下面的实例中，名为 “var” 的变量是通过 <code class="language-plaintext highlighter-rouge">assign</code> 创建的。然后将 <code class="language-plaintext highlighter-rouge">increment</code> 标记（tag）在相同的变量名上应用了几次。注意，<code class="language-plaintext highlighter-rouge">increment</code> 标记（tag）不会对 <code class="language-plaintext highlighter-rouge">assign</code> 创建的变量 “var” 及其值产生任何影响。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign var = 10 %}
+{% increment var %}
+{% increment var %}
+{% increment var %}
+{{ var }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+1
+2
+10
+</code></pre></div></div>
+
+<h2 id="decrement">decrement</h2>
+
+<p>创建一个全新的数值变量，并且在后续每次调用时将此变量的值减 1。初始值是 -1。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% decrement variable %}
+{% decrement variable %}
+{% decrement variable %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-1
+-2
+-3
+</code></pre></div></div>
+
+<p>和 <a href="https://liquid.bootcss.com/tags/variable/#increment">increment</a> 类似，在 <code class="language-plaintext highlighter-rouge">decrement</code> 之中创建的变量与通过 <code class="language-plaintext highlighter-rouge">assign</code> 或 <code class="language-plaintext highlighter-rouge">capture</code> 创建的变量是互相独立的。</p>
+
+<h1 id="abs">abs</h1>
+
+<p>返回一个数字的绝对值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ -17 | abs }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>17
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 4 | abs }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p>如果组成字符串的各个字符全是数字，<code class="language-plaintext highlighter-rouge">abs</code> 也能够对此字符串求绝对值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "-19.86" | abs }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>19.86
+</code></pre></div></div>
+
+<h1 id="append">append</h1>
+
+<p>将两个字符串拼接起来并返回拼接之后的值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "/my/fancy/url" | append: ".html" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/my/fancy/url.html
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">append</code> 同样能够作用于变量：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign filename = "/index.html" %}
+{{ "website.com" | append: filename }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>website.com/index.html
+</code></pre></div></div>
+
+<h1 id="at_least">at_least</h1>
+
+<p>将数字限制在最小值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 4 | at_least: 5 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 4 | at_least: 3 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<h1 id="at_most">at_most</h1>
+
+<p>将数字限制在最大值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 4 | at_most: 5 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 4 | at_most: 3 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<h1 id="capitalize">capitalize</h1>
+
+<p>将字符串首字母转为大写。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "title" | capitalize }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Title
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">capitalize</code> 只把字符串的首字母转为大写，其他字符不受影响：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "my great title" | capitalize }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>My great title
+</code></pre></div></div>
+
+<h1 id="ceil">ceil</h1>
+
+<p>将一个浮点数向上取整并返回一个最接近的整数。在 ceil 过滤器执行之前 Liquid 会先尝试将输入转换为数字格式。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 1.2 | ceil }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 2.0 | ceil }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 183.357 | ceil }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>184
+</code></pre></div></div>
+
+<p>以下实例所用输入是字符串：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "3.5" | ceil }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<h1 id="compact">compact</h1>
+
+<p>删除数组中的所有 <code class="language-plaintext highlighter-rouge">nil</code> 值。</p>
+
+<p>例如，假定整个网站所有内容页面作为一个数组保存在 <code class="language-plaintext highlighter-rouge">site.pages</code> 变量中，其中某些页面被设置了 <code class="language-plaintext highlighter-rouge">category</code> 属性用于指定该页面的内容分类。如果我们利用 <code class="language-plaintext highlighter-rouge">map</code> 过滤器将所有页面的 <code class="language-plaintext highlighter-rouge">category</code> 属性保存到一个数组中，就会出现如果某个页面没有 <code class="language-plaintext highlighter-rouge">category</code> 属性，其在数组中的值就会是 <code class="language-plaintext highlighter-rouge">nil</code>。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign site_categories = site.pages | map: 'category' %}
+
+{% for category in site_categories %}
+  {{ category }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  business
+  celebrities
+
+  lifestyle
+  sports
+
+  technology
+</code></pre></div></div>
+
+<p>在创建 <code class="language-plaintext highlighter-rouge">site_categories</code> 数组时，通过使用 <code class="language-plaintext highlighter-rouge">compact</code> 过滤器我们可以删除此数组中的所有 <code class="language-plaintext highlighter-rouge">nil</code> 值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign site_categories = site.pages | map: 'category' | compact %}
+
+{% for category in site_categories %}
+  {{ category }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  business
+  celebrities
+  lifestyle
+  sports
+  technology
+</code></pre></div></div>
+
+<h1 id="concat">concat</h1>
+
+<p>Concatenates (joins together) multiple arrays. The resulting array contains all the items from the input arrays.</p>
+
+<p>Input</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign fruits = "apples, oranges, peaches" | split: ", " %}
+{% assign vegetables = "carrots, turnips, potatoes" | split: ", " %}
+
+{% assign everything = fruits | concat: vegetables %}
+
+{% for item in everything %}
+- {{ item }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>Output</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- apples
+- oranges
+- peaches
+- carrots
+- turnips
+- potatoes
+</code></pre></div></div>
+
+<p>You can string together <code class="language-plaintext highlighter-rouge">concat</code> filters to join more than two arrays:</p>
+
+<p>Input</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign furniture = "chairs, tables, shelves" | split: ", " %}
+
+{% assign everything = fruits | concat: vegetables | concat: furniture %}
+
+{% for item in everything %}
+- {{ item }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>Output</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- apples
+- oranges
+- peaches
+- carrots
+- turnips
+- potatoes
+- chairs
+- tables
+- shelves
+</code></pre></div></div>
+
+<h1 id="date">date</h1>
+
+<p>将时间戳（timestamp）转换为另一种日期格式。格式化语法与 <a href="http://strftime.net/"><code class="language-plaintext highlighter-rouge">strftime</code></a> 一致。输入格式与 Ruby 中的 <a href="https://ruby-doc.org/stdlib/libdoc/time/rdoc/Time.html#method-c-parse"><code class="language-plaintext highlighter-rouge">Time.parse</code></a> 一致。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ article.published_at | date: "%a, %b %d, %y" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fri, Jul 17, 15
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ article.published_at | date: "%Y" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2015
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">date</code> 能够作用于包含良好格式化的日期字符串：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "March 14, 2016" | date: "%b %d, %y" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Mar 14, 16
+</code></pre></div></div>
+
+<p>将 <code class="language-plaintext highlighter-rouge">"now"</code> (或 <code class="language-plaintext highlighter-rouge">"today"</code>) 单词传入 <code class="language-plaintext highlighter-rouge">date</code> 过滤器可以获取当前时间：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This page was last updated at {{ "now" | date: "%Y-%m-%d %H:%M" }}.
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This page was last updated at 2020-05-01 14:41.
+</code></pre></div></div>
+
+<p>注意，上述实例输出的日期是最后一次生成当前页面的时间，并不是页面呈现给用户的时间。</p>
+
+<h1 id="default">default</h1>
+
+<p>指定一个默认值，以防预期的值不存在。如果左侧的值为 <code class="language-plaintext highlighter-rouge">nil</code>、<code class="language-plaintext highlighter-rouge">false</code> 或空，<code class="language-plaintext highlighter-rouge">default</code> 将输出此默认值。</p>
+
+<p>如下实例中，<code class="language-plaintext highlighter-rouge">product_price</code> 并未被定义，因此将输出默认值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ product_price | default: 2.99 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.99
+</code></pre></div></div>
+
+<p>如下实例中，<code class="language-plaintext highlighter-rouge">product_price</code> 已被定义，不再输出默认值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign product_price = 4.99 %}
+{{ product_price | default: 2.99 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.99
+</code></pre></div></div>
+
+<p>如下实例中，<code class="language-plaintext highlighter-rouge">product_price</code> 的值为空，因此将输出默认值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign product_price = "" %}
+{{ product_price | default: 2.99 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.99
+</code></pre></div></div>
+
+<h1 id="divided_by">divided_by</h1>
+
+<p>将两个数相除。</p>
+
+<p>如果除数（divisor）为整数，则将相除之后得到的结果向下取整得到最接近的整数（也就是对应 <a href="https://liquid.bootcss.com/filters/floor">floor</a> 的功能）。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 16 | divided_by: 4 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 5 | divided_by: 3 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<h3 id="控制舍入">控制舍入</h3>
+
+<p><code class="language-plaintext highlighter-rouge">divided_by</code> 返回的结果于除数是同一数据类型的，也就是说，如果除数是整数，返回的结果也是整数；如果除数是浮点数（带有小数），返回的结果也是浮点数。</p>
+
+<p>如下实例，除数为整数：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 20 | divided_by: 7 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<p>除数为浮点数：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 20 | divided_by: 7.0 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.857142857142857
+</code></pre></div></div>
+
+<h3 id="改变变量的类型">改变变量的类型</h3>
+
+<p>某些情况你需要将除数设置为一个变量，这种情况下你无法简单的给这个变量添加 <code class="language-plaintext highlighter-rouge">.0</code> 将其转变为浮点数。这时，你可以通过 <code class="language-plaintext highlighter-rouge">times</code> 过滤器将其转变为浮点数，并通过 <code class="language-plaintext highlighter-rouge">assign</code> 创建一个新变量来保存转换之后的浮点数。</p>
+
+<p>下例中，除数是一个变量，保存的是一个整数，所以返回值也是一个整数：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_integer = 7 %}
+{{ 20 | divided_by: my_integer }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<p>下面，我们将这个变量<a href="https://liquid.bootcss.com/filters/times">乘以</a> <code class="language-plaintext highlighter-rouge">1.0</code> 来得到一个浮点数，然后将此浮点数作为除数进行运算：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_integer = 7 %}
+{% assign my_float = my_integer | times: 1.0 %}
+{{ 20 | divided_by: my_float }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.857142857142857
+</code></pre></div></div>
+
+<h1 id="downcase">downcase</h1>
+
+<p>用于将字符串中的各个字符转换为小写形式。对于已经是小写形式的字符串没有任何影响。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Parker Moore" | downcase }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>parker moore
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "apple" | downcase }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apple
+</code></pre></div></div>
+
+<h1 id="escape">escape</h1>
+
+<p>对字符串转义操作就是将字符串中的某些字符替换为转义序列（escape sequence），这样整个字符串就能够用于 URL 了。如果字符串不需要转义则不会对字符串做任何操作。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Have you read 'James &amp; the Giant Peach'?" | escape }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Have you read &amp;#39;James &amp;amp; the Giant Peach&amp;#39;?
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Tetsuro Takara" | escape }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tetsuro Takara
+</code></pre></div></div>
+
+<h1 id="escape_once">escape_once</h1>
+
+<p>转义一个字符串并且不修改已经转义过的实体（entities)。对于无须转义的字符串不做任何修改。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "1 &lt; 2 &amp; 3" | escape_once }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 &amp;lt; 2 &amp;amp; 3
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "1 &amp;lt; 2 &amp;amp; 3" | escape_once }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 &amp;lt; 2 &amp;amp; 3
+</code></pre></div></div>
+
+<h1 id="first">first</h1>
+
+<p>返回数组的第一项。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_array = "apples, oranges, peaches, plums" | split: ", " %}
+
+{{ my_array.first }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apples
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_array = "zebra, octopus, giraffe, tiger" | split: ", " %}
+
+{{ my_array.first }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zebra
+</code></pre></div></div>
+
+<h1 id="floor">floor</h1>
+
+<p>将一个浮点数通过舍弃小数部分得到最近的整数。在 floor 过滤器执行之前 Liquid 会先尝试将输入转换为数字格式。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 1.2 | floor }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 2.0 | floor }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 183.357 | floor }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>183
+</code></pre></div></div>
+
+<p>以下实例所用输入是字符串：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "3.5" | floor }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<h1 id="join">join</h1>
+
+<p>将数组中的各个字符串合并为一个字符串，并将 <code class="language-plaintext highlighter-rouge">split</code> 参数作为字符串之间的分隔符。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign beatles = "John, Paul, George, Ringo" | split: ", " %}
+
+{{ beatles | join: " and " }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>John and Paul and George and Ringo
+</code></pre></div></div>
+
+<h1 id="last">last</h1>
+
+<p>返回数组中的最后一项。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_array = "apples, oranges, peaches, plums" | split: ", " %}
+
+{{ my_array.last }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plums
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_array = "zebra, octopus, giraffe, tiger" | split: ", " %}
+
+{{ my_array.last }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tiger
+</code></pre></div></div>
+
+<h1 id="lstrip">lstrip</h1>
+
+<p>删除字符串左侧的所有空白符（制表符、空格和换行符）。字符串中间的所有空白符不受影响。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "          So much room for activities!          " | lstrip }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>So much room for activities!          
+</code></pre></div></div>
+
+<h1 id="map">map</h1>
+
+<p>从对象（object）中提取指定名称的属性的值，并用这些值构建一个数组。</p>
+
+<p>以下实例中，假定 <code class="language-plaintext highlighter-rouge">site.pages</code> 包含了整个网站的元数据信息。利用 <code class="language-plaintext highlighter-rouge">assign</code> 和 <code class="language-plaintext highlighter-rouge">map</code> 过滤器创建一个变量，此变量只包含 <code class="language-plaintext highlighter-rouge">site.pages</code> 对象中 <code class="language-plaintext highlighter-rouge">category</code> 属性对应的所有值。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign all_categories = site.pages | map: "category" %}
+
+{% for item in all_categories %}
+{{ item }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>business
+celebrities
+lifestyle
+sports
+technology
+</code></pre></div></div>
+
+<h1 id="minus">minus</h1>
+
+<p>从一个数中减去另一个数。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 4 | minus: 2 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 16 | minus: 4 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 183.357 | minus: 12 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>171.357
+</code></pre></div></div>
+
+<h1 id="modulo">modulo</h1>
+
+<p>返回除法运算的余数。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 3 | modulo: 2 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 24 | modulo: 7 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 183.357 | modulo: 12 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.357
+</code></pre></div></div>
+
+<h1 id="newline_to_br">newline_to_br</h1>
+
+<p>将所有换行符(<code class="language-plaintext highlighter-rouge">\n</code>) 替换为 HTML 的 (<code class="language-plaintext highlighter-rouge">&lt;br&gt;</code>) 标签。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% capture string_with_newlines %}
+Hello
+there
+{% endcapture %}
+
+{{ string_with_newlines | newline_to_br }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;br /&gt;
+Hello&lt;br /&gt;
+there&lt;br /&gt;
+</code></pre></div></div>
+
+<h1 id="plus">plus</h1>
+
+<p>两个数相加。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 4 | plus: 2 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 16 | plus: 4 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 183.357 | plus: 12 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>195.357
+</code></pre></div></div>
+
+<h1 id="prepend">prepend</h1>
+
+<p>在一个字符串前面附加另一个字符串。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "apples, oranges, and bananas" | prepend: "Some fruit: " }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Some fruit: apples, oranges, and bananas
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">prepend</code> 也能作用于变量：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign url = "example.com" %}
+
+{{ "/index.html" | prepend: url }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>example.com/index.html
+</code></pre></div></div>
+
+<h1 id="remove">remove</h1>
+
+<p>从一个字符串中删除所有出现的另一个子字符串。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "I strained to see the train through the rain" | remove: "rain" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I sted to see the t through the 
+</code></pre></div></div>
+
+<h1 id="remove_first">remove_first</h1>
+
+<p>从一个字符串中仅仅删除第一次出现的另一个子字符串。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "I strained to see the train through the rain" | remove_first: "rain" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I sted to see the train through the rain
+</code></pre></div></div>
+
+<h1 id="replace">replace</h1>
+
+<p>将参数中给出的第一个参数全部替换为第二个参数。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Take my protein pills and put my helmet on" | replace: "my", "your" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Take your protein pills and put your helmet on
+</code></pre></div></div>
+
+<h1 id="replace_first">replace_first</h1>
+
+<p>将字符串中出现的第一个参数替换为第二个参数。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_string = "Take my protein pills and put my helmet on" %}
+{{ my_string | replace_first: "my", "your" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Take your protein pills and put my helmet on
+</code></pre></div></div>
+
+<h1 id="reverse">reverse</h1>
+
+<p>将数组中的所有项的顺序反转。<code class="language-plaintext highlighter-rouge">reverse</code> 不能操作字符串。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_array = "apples, oranges, peaches, plums" | split: ", " %}
+
+{{ my_array | reverse | join: ", " }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plums, peaches, oranges, apples
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">reverse</code> 不能直接应用到字符串上，但是你可以先将字符串分割成字符数组，然后再将数组反转，最后将反转之后的数组合并。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Ground control to Major Tom." | split: "" | reverse | join: "" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.moT rojaM ot lortnoc dnuorG
+</code></pre></div></div>
+
+<h1 id="round">round</h1>
+
+<p>将浮点数舍入到最近的整数，或者，如果传入的参数是一个数值的话，将浮点数舍入到参数指定的小数位。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 1.2 | round }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 2.7 | round }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 183.357 | round: 2 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>183.36
+</code></pre></div></div>
+
+<h1 id="rstrip">rstrip</h1>
+
+<p>将字符串右侧的所有空白字符（制表符 - tab、空格符 - space 和 回车符 - newline）删除。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "          So much room for activities!          " | rstrip }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          So much room for activities!
+</code></pre></div></div>
+
+<h1 id="size">size</h1>
+
+<p>返回字符串中所包含的字符数或者数组中所包含的条目数量。<code class="language-plaintext highlighter-rouge">size</code> 还支持“点标记”（例如 <code class="language-plaintext highlighter-rouge">{{ my_string.size }}</code>）。这种用法便于你在标签（tag）中使用 <code class="language-plaintext highlighter-rouge">size</code> 过滤器，例如条件判断标签（tag）。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Ground control to Major Tom." | size }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>28
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_array = "apples, oranges, peaches, plums" | split: ", " %}
+
+{{ my_array | size }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<p>使用“点标记”：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if site.pages.size &gt; 10 %}
+  This is a big website!
+{% endif %}
+</code></pre></div></div>
+
+<h1 id="slice">slice</h1>
+
+<p>只传入一个参数时将返回此参数作为下标所对应的单个字符。第二个参数是可选的，用于指定返回的子字符串的长度。</p>
+
+<p>String indices are numbered starting from 0.</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Liquid" | slice: 0 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Liquid" | slice: 2 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>q
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Liquid" | slice: 2, 5 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>quid
+</code></pre></div></div>
+
+<p>If the first parameter is a negative number, the indices are counted from the end of the string:</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Liquid" | slice: -3, 2 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ui
+</code></pre></div></div>
+
+<h1 id="sort">sort</h1>
+
+<p>对数组中的所有进行排序。排序后的数组是按照区分大小写的顺序排列的。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_array = "zebra, octopus, giraffe, Sally Snake" | split: ", " %}
+
+{{ my_array | sort | join: ", " }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sally Snake, giraffe, octopus, zebra
+</code></pre></div></div>
+
+<h1 id="sort_natural">sort_natural</h1>
+
+<p>对数组进行排序，并且大小写无关。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_array = "zebra, octopus, giraffe, Sally Snake" | split: ", " %}
+
+{{ my_array | sort_natural | join: ", " }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>giraffe, octopus, Sally Snake, zebra
+</code></pre></div></div>
+
+<h1 id="split">split</h1>
+
+<p>根据参数传入的分隔符将字符串分解为数组。<code class="language-plaintext highlighter-rouge">split</code> 通常被用于将以逗号为分隔符的字符串转换为数组。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign beatles = "John, Paul, George, Ringo" | split: ", " %}
+
+{% for member in beatles %}
+  {{ member }}
+{% endfor %}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  John
+
+  Paul
+
+  George
+
+  Ringo
+</code></pre></div></div>
+
+<h1 id="strip">strip</h1>
+
+<p>删除字符串左右两侧的所有空白符号（包括制表符、空格、换行符）。对于字符串中间的空白符不做任何处理。</p>
+
+<p>Input</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "          So much room for activities!          " | strip }}
+</code></pre></div></div>
+
+<p>Output</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>So much room for activities!
+</code></pre></div></div>
+
+<h1 id="strip_html">strip_html</h1>
+
+<p>从字符串中删除所有 HTML 标签。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Have &lt;em&gt;you&lt;/em&gt; read &lt;strong&gt;Ulysses&lt;/strong&gt;?" | strip_html }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Have you read Ulysses?
+</code></pre></div></div>
+
+<h1 id="strip_newlines">strip_newlines</h1>
+
+<p>从字符串中删除所有换行字符（newline character）。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% capture string_with_newlines %}
+Hello
+there
+{% endcapture %}
+
+{{ string_with_newlines | strip_newlines }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hellothere
+</code></pre></div></div>
+
+<h1 id="times">times</h1>
+
+<p>将一个数乘以另一个数。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 3 | times: 2 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 24 | times: 7 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>168
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ 183.357 | times: 12 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2200.284
+</code></pre></div></div>
+
+<h1 id="truncate">truncate</h1>
+
+<p><code class="language-plaintext highlighter-rouge">truncate</code> 将字符串截短为指定的字符个数。如果指定的字符数量小于字符串的长度，则会在字符串末尾添加一个省略号(…) 并将此省略号计入字符个数中。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Ground control to Major Tom." | truncate: 20 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ground control to...
+</code></pre></div></div>
+
+<h3 id="自定义省略号">自定义省略号</h3>
+
+<p><code class="language-plaintext highlighter-rouge">truncate</code> 还支持第二个可选参数，用于指定一个字符序列，此字符序列将被添加到截短字符串的后面。默认是省略号(…)，但是你可以按照你的需要传递一个新的。</p>
+
+<p>第二个参数的长度将被计入第一个参数的字符个数中。例如，如果你希望将字符串截短为 10 个字符，并且使用由 3 个字符组成的省略号，这时，你需要将 <code class="language-plaintext highlighter-rouge">truncate</code> 的第一个参数设置为 <strong>13</strong>，是因为需要计入省略号的 3 个字符。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Ground control to Major Tom." | truncate: 25, ", and so on" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ground control, and so on
+</code></pre></div></div>
+
+<h3 id="无省略号">无省略号</h3>
+
+<p>你可以将字符串按照第一个参数截短为指定长度，并且可以通过传递一个空字符作为第二个参数，从而让截短之后的字符串不显示省略号。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Ground control to Major Tom." | truncate: 20, "" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ground control to Ma
+</code></pre></div></div>
+
+<h1 id="truncatewords">truncatewords</h1>
+
+<p>将字符串截短为指定的单词个数。如果指定的单词数量小于字符串中包含的单词个数，则会在字符串末尾添加一个省略号(…)。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Ground control to Major Tom." | truncatewords: 3 }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ground control to...
+</code></pre></div></div>
+
+<h3 id="自定义省略号-1">自定义省略号</h3>
+
+<p><code class="language-plaintext highlighter-rouge">truncatewords</code> 还支持第二个可选参数，用于指定一个字符序列，此字符序列将被添加到截短字符串的后面。默认是省略号(…)，但是你可以按照你的需要传递一个新的。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Ground control to Major Tom." | truncatewords: 3, "--" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ground control to--
+</code></pre></div></div>
+
+<h3 id="无省略号-1">无省略号</h3>
+
+<p>如果你不希望在末尾添加省略号，可以将 <code class="language-plaintext highlighter-rouge">truncatewords</code> 的第二个参数设置为空字符串：</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Ground control to Major Tom." | truncatewords: 3, "" }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ground control to
+</code></pre></div></div>
+
+<h1 id="uniq">uniq</h1>
+
+<p>删除数组中的所有冗余项。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign my_array = "ants, bugs, bees, bugs, ants" | split: ", " %}
+
+{{ my_array | uniq | join: ", " }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ants, bugs, bees
+</code></pre></div></div>
+
+<h1 id="upcase">upcase</h1>
+
+<p>将字符串中的每个字符都转换为大写形式。对于已经全是大写的字符串不做任何操作。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Parker Moore" | upcase }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PARKER MOORE
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "APPLE" | upcase }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>APPLE
+</code></pre></div></div>
+
+<h1 id="url_decode">url_decode</h1>
+
+<p>对于作为 URL 进行编码或通过 <a href="https://liquid.bootcss.com/filters/url_encode"><code class="language-plaintext highlighter-rouge">url_encode</code></a> 编码的字符串进行解码。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "%27Stop%21%27+said+Fred" | url_decode }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Stop!' said Fred
+</code></pre></div></div>
+
+<h1 id="url_encode">url_encode</h1>
+
+<p>将字符串中非 URL 安全的字符转换为百分号编码（percent-encoded）的字符。</p>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "john@liquid.com" | url_encode }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>john%40liquid.com
+</code></pre></div></div>
+
+<p>输入</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ "Tetsuro Takara" | url_encode }}
+</code></pre></div></div>
+
+<p>输出</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tetsuro+Takara
+</code></pre></div></div>]]></content><author><name>UnknownX1</name></author><category term="Liuqid" /><summary type="html"><![CDATA[[Liquid 模板语言中文文档 Liquid 中文网 (bootcss.com)](https://liquid.bootcss.com/) 简介 Liquid 代码可分为 对象（object）、标记（tag） 和 过滤器（filter）。 对象 对象 告诉 Liquid 在页面的哪个位置展示内容。对象和变量名由双花括号标识：{{ 和 }}。 输入 {{ page.title }} 输出 Introduction 上述实例中，Liquid 输出 page.title 对象的内容，此对象保存的是文本 Introduction。 标记（tag） 标记（tag） 创造了模板的逻辑和控制流。他们由单括号加百分号标识：{% 和 %}。 标记（tag）并不产生任何可见的文本输出。这意味着你可以用他们为变量赋值、创建条件和循环逻辑，并且不在页面上显示出任何 Liquid 逻辑代码。 输入 {% if user %} Hello {{ user.name }}! {% endif %} 输出 Hello Adam! 标记被分为三类： 控制流 迭代 变量赋值 你可以在每一类标记所对应的章节了解更多信息。 过滤器 过滤器 改变 Liquid 对象的输出。他们被用在输出上，通过一个 | 符号分隔。 输入 {{ "/my/fancy/url" | append: ".html" }} 输出 /my/fancy/url.html 多个过滤器可以共同作用于同一个输出，并按照从左到右的顺序执行。 输入 {{ "adam!" | capitalize | prepend: "Hello " }} 输出 Hello Adam! 操作符 Liquid 包含了大量逻辑（logical）和比较操作符（comparison operator）。 基本操作符 == 相等 != 不相等 &gt; 大于 &lt; 小于 &gt;= 大于或等于 &lt;= 小于或等于 or 逻辑或 and 逻辑与 例如： {% if product.title == "Awesome Shoes" %} These shoes are awesome! {% endif %} 可以在一个标记（tag）中使用多个操作符： {% if product.type == "Shirt" or product.type == "Shoes" %} This is a shirt or a pair of shoes. {% endif %} contains（包含） contains 用于检查在一个字符串中是否存在某个子串。 {% if product.title contains 'Pack' %} This product's title contains the word Pack. {% endif %} contains 还可以用于检查一个字符串数组中是否存在某个字符串。 {% if product.tags contains 'Hello' %} This product has been tagged with 'Hello'. {% endif %} contains 只能用于搜索字符串。你不能将其用于从一个对象数组中检查是否存在某个对象。 真值与假值 编程时，在条件判断中任何返回 true 的都被叫做 真值（truthy）。任何返回 false 的都被叫做 假值（falsy）。所有的对象（object）类型都可以被描述为真值（truthy）或假值（falsy）。 Truthy Falsy Summary 真值（Truthy） 除了 nil 和 false 之外的所有值都是真值。 如下例，字符串 “Tobi” 虽不是布尔类型，但是其在条件判断时被当做真值（truthy）： {% assign tobi = "Tobi" %} {% if tobi %} This condition will always be true. {% endif %} 字符串（String），即便是空字符串，也是真值（truthy）。如下例，如果 settings.fp_heading 是个空字符串将会输出空 HTML 标签： 输入 {% if settings.fp_heading %} &lt;h1&gt;{{ settings.fp_heading }}&lt;/h1&gt; {% endif %} 输出 &lt;h1&gt;&lt;/h1&gt; 假值（Falsy） 在 Liquid 中，nil 和 false 是假值。 总结 下表总结了在 Liquid 中什么是真值什么是假值。   真值（truthy） 假值（falsy） true •   false   • nil   • string •   empty string •   0 •   integer •   float •   array •   empty array •   page •   EmptyDrop •   数据类型 Liquid 对象的类型可以是以下五种： String Number Boolean Nil Array 你可以通过 assign 或 capture 标记来初始化 Liquid 变量。 String（字符串） 将变量的值包裹在单引号或双引号之中就声明了一个字符串： {% assign my_string = "Hello World!" %} Number（数字） 数字类型包括浮点数和整数： {% assign my_int = 25 %} {% assign my_float = 39.756 %} Boolean（布尔） Booleans 类型只能是 true 或 false。布尔值千万不能加引号，否则就成为字符串了。 {% assign foo = true %} {% assign bar = false %} Nil（空） Nil 是一个特殊的空值，当 Liquid 代码没有可输出的结果时将返回 Nil。他并不是由 “nil” 这个三个字符组成的字符串。 在 if 条件判断和其他 Liquid 标记（tag）判断语句中，Nil 被当做 false 。 下例中，如果 user 不存在（也就是 user 返回 nil），Liquid 不输出问候语： {% if user %} Hello {{ user.name }}! {% endif %} 如果 Liquid 标记（tag）或输出返回的是 nil，页面上将不会有任何内容。 输入 The current user is {{ user.name }} 输出 The current user is Array（数组） 数组能够存储一组任意类型的变量。 访问数组中的项 通过 迭代标记（iteration tag） 可以访问数组中的所有项。 输入 &lt;!-- if site.users = "Tobi", "Laura", "Tetsuro", "Adam" --&gt; {% for user in site.users %} {{ user }} {% endfor %} 输出 Tobi Laura Tetsuro Adam 访问数组中的特定项 利用方括号 [ ] 能够访问数组中的特定项。数组的索引从 0 开始。 输入 &lt;!-- if site.users = "Tobi", "Laura", "Tetsuro", "Adam" --&gt; {{ site.users[0] }} {{ site.users[1] }} {{ site.users[3] }} 输出 Tobi Laura Adam 初始化数组 你无法只通过 Liquid 语法初始化一个数组。 然而，你可以利用 split 过滤器将一个字符串分割为一个子字符串数组。 Liquid 的各种分支 Liquid 是一门灵活、安全的模版语言，被用于许多不同环境中。Liquid 被创建之初是用在 Shopify 商店系统中的，后来也被广泛用于 Jekyll 网站中。随着时间的推移，Shopify 和 Jekyll 分别为 Liquid 添加了针对各自用途的对象（object）、标记（tag）和过滤器（filter）。目前最流行的 Liquid 版本包括 Liquid、Shopify Liquid 和 Jekyll Liquid。 本站点托管的是最新版本的 Liquid 的文档，包括了 beta 和 release candidate 版本中包含的特性，也就是说，是独立于 Shopify 和 Jekyll 之外的 Liquid。如果你是从 Liquid 仓库下载的代码或者安装的的是 gem 包，你所选择的 Liquid 版本对应你能够访问的对象（object）、标记（tag）和过滤器。 Shopify Shopify 一直采用的都是最新版本的 Liquid，并且 Shopify 会针对 merchants’ store 为 Liquid 添加大量的对象（object）、标记（tag）和过滤器。这些新增的内容包括代表商店（store）、产品（product）和顾客信息的对象，以及用于展示商店数据和操作产品照片的过滤器。 Shopify 版本的 Liquid 所对应的文档在 Shopify Help Center。如果你希望尝试 Shopify 版本的 Liquid，你可以试用 Shopify 或者使用类似 DropPen 的工具。 Jekyll Jekyll 是一个静态网站生成器，一个用于将模版和内容合并到一起从而创建网站的命令行工具。ekyll 将 Liquid 作为自身的模版语言，并且添加了许多对象（object）、标记（tag）和过滤器（filter）。这些新增内容包括代表内容页面的对象、用于在页面中引入内容片段的标记（tag），以及用于操作字符串和 URL 的过滤器。 Jekyll 还是 GitHub Pages 的底层引擎。GitHub Pages 是一项网站托管服务，允许你将 Jekyll 网站推送到 GitHub 仓库，最终得到一个发布到公网的站点。本网站就是由 GitHub Pages 托管的。 Jekyll 可能使用的不是最新版本的 Liquid。也就意味着本文档所列出的标记（tag）和过滤器不能在 Jekyll 中使用。通常 Jekyll 项目使用的是稳定版的 Liquid，而不使用 beta 或 release candidate 版本。通过 Jekyll 的 gem 信息也 可查看 Jekyll 所依赖的所有 gem 包，从而可以了解 Jekyll 所使用的 Liquid 版本。 Jekyll 版本的 Liquid 的文档在 Templates section of Jekyll’s documentation。如果你希望尝试 Jekyll 版本的 Liquid，你可以克隆 Jekyll 项目或者安装 Jekyll 的 gem 包，然后在静态网站中测试 Liquid。 控制输出的空白符 在 Liquid 模版中，你可以将连字符放在标记（tag）中，例如 {{-、-}}、{%- 和 -%}，用于将标记（tag）渲染之后的输出内容的左侧或右侧的空拍符剔除。 通常，即使不输出文本，模版中的任何 Liquid 表达式仍然会在渲染之后输出的 HTML 中包含一个空行： 输入 {% assign my_variable = "tomato" %} {{ my_variable }} 请注意渲染之后输出的 “tomato” 字符前面包含了一个空行： 输出 tomato 通过为 assign 标记（tag）添加连字符，可以将渲染之后所输出的空拍符删除： 输入 {%- assign my_variable = "tomato" -%} {{ my_variable }} 输出 tomato 如果你不希望任何标记（tag）被渲染之后所输出的内容有任何空白符，只需在所有标记（tag）两侧全部添加连字符即可，例如 ({%- 和 -%})： 输入 {% assign username = "John G. Chalmers-Smith" %} {% if username and username.size &gt; 10 %} Wow, {{ username }}, you have a long name! {% else %} Hello there! {% endif %} 不做空白符控制的输出 Wow, John G. Chalmers-Smith, you have a long name! 输入 {%- assign username = "John G. Chalmers-Smith" -%} {%- if username and username.size &gt; 10 -%} Wow, {{ username }}, you have a long name! {%- else -%} Hello there! {%- endif -%} 带有空白符控制的输出 Wow, John G. Chalmers-Smith, you have a long name! 注释 comment 标记让你能够在 Liquid 模板中书写的内容不被输出。任何书写在 comment 起始与结束标记之间的内容都不会被输出，如果是 Liquid 代码则不会被执行。 输入 Anything you put between {% comment %} and {% endcomment %} tags is turned into a comment. 输出 Anything you put between tags is turned into a comment. 控制流 控制流标记（control flow tag）能够根据编程逻辑改变 Liquid 输出的信息。 if 只有当某个条件为 true 时才执行一段代码。 输入 {% if product.title == 'Awesome Shoes' %} These shoes are awesome! {% endif %} 输出 These shoes are awesome! unless 与 if 相对 – 只有当某个条件不成立时才执行一段代码。 输入 {% unless product.title == 'Awesome Shoes' %} These shoes are not awesome. {% endunless %} 输出 These shoes are not awesome. 和如下实例的执行结果一致： {% if product.title != 'Awesome Shoes' %} These shoes are not awesome. {% endif %} elsif / else 为 if 或 unless 添加更多状态判断。 输入 &lt;!-- If customer.name = 'anonymous' --&gt; {% if customer.name == 'kevin' %} Hey Kevin! {% elsif customer.name == 'anonymous' %} Hey Anonymous! {% else %} Hi Stranger! {% endif %} 输出 Hey Anonymous! case/when 创建一个开关表达式，用于将一个变量和多个不同值进行比较。case 用于初始化一个开关表达式，when 用于比较他们的值。 输入 {% assign handle = 'cake' %} {% case handle %} {% when 'cake' %} This is a cake {% when 'cookie' %} This is a cookie {% else %} This is not a cake nor a cookie {% endcase %} 输出 This is a cake 迭代／循环 迭代（或循环）标记（iteration tag）用于重复运行一段代码。 for 重复运行一段代码。for 循环中所能够使用的属性请参考 forloop (object)。 输入 {% for product in collection.products %} {{ product.title }} {% endfor %} 输出 hat shirt pants break 循环过程中若干遇到 break 标记（tag）即停止循环。 输入 {% for i in (1..5) %} {% if i == 4 %} {% break %} {% else %} {{ i }} {% endif %} {% endfor %} 输出 1 2 3 continue 循环过程中若遇到 continue 标记（tag）则跳出当前循环。 输入 {% for i in (1..5) %} {% if i == 4 %} {% continue %} {% else %} {{ i }} {% endif %} {% endfor %} 输出 1 2 3 5 for (parameters) limit 限定循环执行的次数。 输入 &lt;!-- if array = [1,2,3,4,5,6] --&gt; {% for item in array limit:2 %} {{ item }} {% endfor %} 输出 1 2 offset 从指定索引号开始执行循环。 输入 &lt;!-- if array = [1,2,3,4,5,6] --&gt; {% for item in array offset:2 %} {{ item }} {% endfor %} 输出 3 4 5 6 range 定义循环执行的范围。可利用数字或变量来定义此执行范围。 输入 {% for i in (3..5) %} {{ i }} {% endfor %} {% assign num = 4 %} {% for i in (1..num) %} {{ i }} {% endfor %} 输出 3 4 5 1 2 3 4 reversed 反转循环的执行顺序。注意和 reverse 过滤器（filter）的拼写是不同的。 输入 &lt;!-- if array = [1,2,3,4,5,6] --&gt; {% for item in array reversed %} {{ item }} {% endfor %} 输出 6 5 4 3 2 1 cycle 循环一组字符串并按照它们传入的顺序将其输出。每次调用 cycle 时，传入的参数中的下一个字符串将被输出。 cycle 必须用在 for 循环中。 输入 {% cycle 'one', 'two', 'three' %} {% cycle 'one', 'two', 'three' %} {% cycle 'one', 'two', 'three' %} {% cycle 'one', 'two', 'three' %} 输出 one two three one cycle 的使用场景包括： 对表格中的奇数／偶数行输出相应的类（class） 在一行中的最后一列输出一个唯一的类（class） cycle (parameters) cycle 能够接受一个叫做 cycle group 的参数，以便满足你在模版中需要使用多个 cycle 代码块的情况。如果没有为 cycle group 命名，那么将会假定带有相同参数的 cycle 调用属于同一个组（group）。 tablerow 生成一个 HTML 表格。必须用 &lt;table&gt; 和 &lt;/table&gt; 这两个 HTML 标签将其包裹起来。 输入 &lt;table&gt; {% tablerow product in collection.products %} {{ product.title }} {% endtablerow %} &lt;/table&gt; 输出 &lt;table&gt; &lt;tr class="row1"&gt; &lt;td class="col1"&gt; Cool Shirt &lt;/td&gt; &lt;td class="col2"&gt; Alien Poster &lt;/td&gt; &lt;td class="col3"&gt; Batman Poster &lt;/td&gt; &lt;td class="col4"&gt; Bullseye Shirt &lt;/td&gt; &lt;td class="col5"&gt; Another Classic Vinyl &lt;/td&gt; &lt;td class="col6"&gt; Awesome Jeans &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; tablerow (parameters) cols 定义表格应当有多少列。 输入 {% tablerow product in collection.products cols:2 %} {{ product.title }} {% endtablerow %} 输出 &lt;table&gt; &lt;tr class="row1"&gt; &lt;td class="col1"&gt; Cool Shirt &lt;/td&gt; &lt;td class="col2"&gt; Alien Poster &lt;/td&gt; &lt;/tr&gt; &lt;tr class="row2"&gt; &lt;td class="col1"&gt; Batman Poster &lt;/td&gt; &lt;td class="col2"&gt; Bullseye Shirt &lt;/td&gt; &lt;/tr&gt; &lt;tr class="row3"&gt; &lt;td class="col1"&gt; Another Classic Vinyl &lt;/td&gt; &lt;td class="col2"&gt; Awesome Jeans &lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; limit 在执行到指定的脚标（index）之后退出 tablerow 。 {% tablerow product in collection.products cols:2 limit:3 %} {{ product.title }} {% endtablerow %} offset 在指定的脚标（index）之后开始执行 tablerow 。 {% tablerow product in collection.products cols:2 offset:3 %} {{ product.title }} {% endtablerow %} range 定义循环执行的范围。可利用数字和变量来定义执行范围。 &lt;!--variable number example--&gt; {% assign num = 4 %} &lt;table&gt; {% tablerow i in (1..num) %} {{ i }} {% endtablerow %} &lt;/table&gt; &lt;!--literal number example--&gt; &lt;table&gt; {% tablerow i in (3..5) %} {{ i }} {% endtablerow %} &lt;/table&gt; 原始内容 raw 标记临时禁止处理其所包围的代码。如果输出的内容与 Liquid 模板语言有冲突时（例如 Mustache、Handlebars 模板语言）可以避免冲突。 输入 In Handlebars, {{ this }} will be HTML-escaped, but {{{ that }}} will not. 输出 In Handlebars, {{ this }} will be HTML-escaped, but {{{ that }}} will not. 变量 变量标记（variable tag）用于创建新的 Liquid 变量。 assign 创建一个新变量。 输入 {% assign my_variable = false %} {% if my_variable != true %} This statement is valid. {% endif %} 输出 This statement is valid. 将变量用 " 包裹之后则将其当做字符串对待。 输入 {% assign foo = "bar" %} {{ foo }} 输出 bar capture 将 capture 开始与结束标记之间的字符串捕获之后赋值给一个变量。通过 {% capture %} 创建的变量都是字符串。 输入 {% capture my_variable %}I am being captured.{% endcapture %} {{ my_variable }} 输出 I am being captured. 使用 capture 时，你还可以利用 assign 创建的其他变量创造一个复杂的字符串。 输入 {% assign favorite_food = 'pizza' %} {% assign age = 35 %} {% capture about_me %} I am {{ age }} and my favorite food is {{ favorite_food }}. {% endcapture %} {{ about_me }} 输出 I am 35 and my favourite food is pizza. increment 创建一个全新的数值变量，并且在后续每次调用时将此变量的值加 1。初始值是 0。 输入 {% increment my_counter %} {% increment my_counter %} {% increment my_counter %} 输出 0 1 2 通过 increment 标记（tag）创建的变量与通过 assign 或 capture 创建的变量是相互独立的。 在下面的实例中，名为 “var” 的变量是通过 assign 创建的。然后将 increment 标记（tag）在相同的变量名上应用了几次。注意，increment 标记（tag）不会对 assign 创建的变量 “var” 及其值产生任何影响。 输入 {% assign var = 10 %} {% increment var %} {% increment var %} {% increment var %} {{ var }} 输出 0 1 2 10 decrement 创建一个全新的数值变量，并且在后续每次调用时将此变量的值减 1。初始值是 -1。 输入 {% decrement variable %} {% decrement variable %} {% decrement variable %} 输出 -1 -2 -3 和 increment 类似，在 decrement 之中创建的变量与通过 assign 或 capture 创建的变量是互相独立的。 abs 返回一个数字的绝对值。 输入 {{ -17 | abs }} 输出 17 输入 {{ 4 | abs }} 输出 4 如果组成字符串的各个字符全是数字，abs 也能够对此字符串求绝对值。 输入 {{ "-19.86" | abs }} 输出 19.86 append 将两个字符串拼接起来并返回拼接之后的值。 输入 {{ "/my/fancy/url" | append: ".html" }} 输出 /my/fancy/url.html append 同样能够作用于变量： 输入 {% assign filename = "/index.html" %} {{ "website.com" | append: filename }} 输出 website.com/index.html at_least 将数字限制在最小值。 输入 {{ 4 | at_least: 5 }} 输出 5 输入 {{ 4 | at_least: 3 }} 输出 4 at_most 将数字限制在最大值。 输入 {{ 4 | at_most: 5 }} 输出 4 输入 {{ 4 | at_most: 3 }} 输出 3 capitalize 将字符串首字母转为大写。 输入 {{ "title" | capitalize }} 输出 Title capitalize 只把字符串的首字母转为大写，其他字符不受影响： 输入 {{ "my great title" | capitalize }} 输出 My great title ceil 将一个浮点数向上取整并返回一个最接近的整数。在 ceil 过滤器执行之前 Liquid 会先尝试将输入转换为数字格式。 输入 {{ 1.2 | ceil }} 输出 2 输入 {{ 2.0 | ceil }} 输出 2 输入 {{ 183.357 | ceil }} 输出 184 以下实例所用输入是字符串： 输入 {{ "3.5" | ceil }} 输出 4 compact 删除数组中的所有 nil 值。 例如，假定整个网站所有内容页面作为一个数组保存在 site.pages 变量中，其中某些页面被设置了 category 属性用于指定该页面的内容分类。如果我们利用 map 过滤器将所有页面的 category 属性保存到一个数组中，就会出现如果某个页面没有 category 属性，其在数组中的值就会是 nil。 输入 {% assign site_categories = site.pages | map: 'category' %} {% for category in site_categories %} {{ category }} {% endfor %} 输出 business celebrities lifestyle sports technology 在创建 site_categories 数组时，通过使用 compact 过滤器我们可以删除此数组中的所有 nil 值。 输入 {% assign site_categories = site.pages | map: 'category' | compact %} {% for category in site_categories %} {{ category }} {% endfor %} 输出 business celebrities lifestyle sports technology concat Concatenates (joins together) multiple arrays. The resulting array contains all the items from the input arrays. Input {% assign fruits = "apples, oranges, peaches" | split: ", " %} {% assign vegetables = "carrots, turnips, potatoes" | split: ", " %} {% assign everything = fruits | concat: vegetables %} {% for item in everything %} - {{ item }} {% endfor %} Output - apples - oranges - peaches - carrots - turnips - potatoes You can string together concat filters to join more than two arrays: Input {% assign furniture = "chairs, tables, shelves" | split: ", " %} {% assign everything = fruits | concat: vegetables | concat: furniture %} {% for item in everything %} - {{ item }} {% endfor %} Output - apples - oranges - peaches - carrots - turnips - potatoes - chairs - tables - shelves date 将时间戳（timestamp）转换为另一种日期格式。格式化语法与 strftime 一致。输入格式与 Ruby 中的 Time.parse 一致。 输入 {{ article.published_at | date: "%a, %b %d, %y" }} 输出 Fri, Jul 17, 15 输入 {{ article.published_at | date: "%Y" }} 输出 2015 date 能够作用于包含良好格式化的日期字符串： 输入 {{ "March 14, 2016" | date: "%b %d, %y" }} 输出 Mar 14, 16 将 "now" (或 "today") 单词传入 date 过滤器可以获取当前时间： 输入 This page was last updated at {{ "now" | date: "%Y-%m-%d %H:%M" }}. 输出 This page was last updated at 2020-05-01 14:41. 注意，上述实例输出的日期是最后一次生成当前页面的时间，并不是页面呈现给用户的时间。 default 指定一个默认值，以防预期的值不存在。如果左侧的值为 nil、false 或空，default 将输出此默认值。 如下实例中，product_price 并未被定义，因此将输出默认值。 输入 {{ product_price | default: 2.99 }} 输出 2.99 如下实例中，product_price 已被定义，不再输出默认值。 输入 {% assign product_price = 4.99 %} {{ product_price | default: 2.99 }} 输出 4.99 如下实例中，product_price 的值为空，因此将输出默认值。 输入 {% assign product_price = "" %} {{ product_price | default: 2.99 }} 输出 2.99 divided_by 将两个数相除。 如果除数（divisor）为整数，则将相除之后得到的结果向下取整得到最接近的整数（也就是对应 floor 的功能）。 输入 {{ 16 | divided_by: 4 }} 输出 4 输入 {{ 5 | divided_by: 3 }} 输出 1 控制舍入 divided_by 返回的结果于除数是同一数据类型的，也就是说，如果除数是整数，返回的结果也是整数；如果除数是浮点数（带有小数），返回的结果也是浮点数。 如下实例，除数为整数： 输入 {{ 20 | divided_by: 7 }} 输出 2 除数为浮点数： 输入 {{ 20 | divided_by: 7.0 }} 输出 2.857142857142857 改变变量的类型 某些情况你需要将除数设置为一个变量，这种情况下你无法简单的给这个变量添加 .0 将其转变为浮点数。这时，你可以通过 times 过滤器将其转变为浮点数，并通过 assign 创建一个新变量来保存转换之后的浮点数。 下例中，除数是一个变量，保存的是一个整数，所以返回值也是一个整数： 输入 {% assign my_integer = 7 %} {{ 20 | divided_by: my_integer }} 输出 2 下面，我们将这个变量乘以 1.0 来得到一个浮点数，然后将此浮点数作为除数进行运算： 输入 {% assign my_integer = 7 %} {% assign my_float = my_integer | times: 1.0 %} {{ 20 | divided_by: my_float }} 输出 2.857142857142857 downcase 用于将字符串中的各个字符转换为小写形式。对于已经是小写形式的字符串没有任何影响。 输入 {{ "Parker Moore" | downcase }} 输出 parker moore 输入 {{ "apple" | downcase }} 输出 apple escape 对字符串转义操作就是将字符串中的某些字符替换为转义序列（escape sequence），这样整个字符串就能够用于 URL 了。如果字符串不需要转义则不会对字符串做任何操作。 输入 {{ "Have you read 'James &amp; the Giant Peach'?" | escape }} 输出 Have you read &amp;#39;James &amp;amp; the Giant Peach&amp;#39;? 输入 {{ "Tetsuro Takara" | escape }} 输出 Tetsuro Takara escape_once 转义一个字符串并且不修改已经转义过的实体（entities)。对于无须转义的字符串不做任何修改。 输入 {{ "1 &lt; 2 &amp; 3" | escape_once }} 输出 1 &amp;lt; 2 &amp;amp; 3 输入 {{ "1 &amp;lt; 2 &amp;amp; 3" | escape_once }} 输出 1 &amp;lt; 2 &amp;amp; 3 first 返回数组的第一项。 输入 {% assign my_array = "apples, oranges, peaches, plums" | split: ", " %} {{ my_array.first }} 输出 apples 输入 {% assign my_array = "zebra, octopus, giraffe, tiger" | split: ", " %} {{ my_array.first }} 输出 zebra floor 将一个浮点数通过舍弃小数部分得到最近的整数。在 floor 过滤器执行之前 Liquid 会先尝试将输入转换为数字格式。 输入 {{ 1.2 | floor }} 输出 1 输入 {{ 2.0 | floor }} 输出 2 输入 {{ 183.357 | floor }} 输出 183 以下实例所用输入是字符串： 输入 {{ "3.5" | floor }} 输出 3 join 将数组中的各个字符串合并为一个字符串，并将 split 参数作为字符串之间的分隔符。 输入 {% assign beatles = "John, Paul, George, Ringo" | split: ", " %} {{ beatles | join: " and " }} 输出 John and Paul and George and Ringo last 返回数组中的最后一项。 输入 {% assign my_array = "apples, oranges, peaches, plums" | split: ", " %} {{ my_array.last }} 输出 plums 输入 {% assign my_array = "zebra, octopus, giraffe, tiger" | split: ", " %} {{ my_array.last }} 输出 tiger lstrip 删除字符串左侧的所有空白符（制表符、空格和换行符）。字符串中间的所有空白符不受影响。 输入 {{ " So much room for activities! " | lstrip }} 输出 So much room for activities! map 从对象（object）中提取指定名称的属性的值，并用这些值构建一个数组。 以下实例中，假定 site.pages 包含了整个网站的元数据信息。利用 assign 和 map 过滤器创建一个变量，此变量只包含 site.pages 对象中 category 属性对应的所有值。 输入 {% assign all_categories = site.pages | map: "category" %} {% for item in all_categories %} {{ item }} {% endfor %} 输出 business celebrities lifestyle sports technology minus 从一个数中减去另一个数。 输入 {{ 4 | minus: 2 }} 输出 2 输入 {{ 16 | minus: 4 }} 输出 12 输入 {{ 183.357 | minus: 12 }} 输出 171.357 modulo 返回除法运算的余数。 输入 {{ 3 | modulo: 2 }} 输出 1 输入 {{ 24 | modulo: 7 }} 输出 3 输入 {{ 183.357 | modulo: 12 }} 输出 3.357 newline_to_br 将所有换行符(\n) 替换为 HTML 的 (&lt;br&gt;) 标签。 输入 {% capture string_with_newlines %} Hello there {% endcapture %} {{ string_with_newlines | newline_to_br }} 输出 &lt;br /&gt; Hello&lt;br /&gt; there&lt;br /&gt; plus 两个数相加。 输入 {{ 4 | plus: 2 }} 输出 6 输入 {{ 16 | plus: 4 }} 输出 20 输入 {{ 183.357 | plus: 12 }} 输出 195.357 prepend 在一个字符串前面附加另一个字符串。 输入 {{ "apples, oranges, and bananas" | prepend: "Some fruit: " }} 输出 Some fruit: apples, oranges, and bananas prepend 也能作用于变量： 输入 {% assign url = "example.com" %} {{ "/index.html" | prepend: url }} 输出 example.com/index.html remove 从一个字符串中删除所有出现的另一个子字符串。 输入 {{ "I strained to see the train through the rain" | remove: "rain" }} 输出 I sted to see the t through the remove_first 从一个字符串中仅仅删除第一次出现的另一个子字符串。 输入 {{ "I strained to see the train through the rain" | remove_first: "rain" }} 输出 I sted to see the train through the rain replace 将参数中给出的第一个参数全部替换为第二个参数。 输入 {{ "Take my protein pills and put my helmet on" | replace: "my", "your" }} 输出 Take your protein pills and put your helmet on replace_first 将字符串中出现的第一个参数替换为第二个参数。 输入 {% assign my_string = "Take my protein pills and put my helmet on" %} {{ my_string | replace_first: "my", "your" }} 输出 Take your protein pills and put my helmet on reverse 将数组中的所有项的顺序反转。reverse 不能操作字符串。 输入 {% assign my_array = "apples, oranges, peaches, plums" | split: ", " %} {{ my_array | reverse | join: ", " }} 输出 plums, peaches, oranges, apples reverse 不能直接应用到字符串上，但是你可以先将字符串分割成字符数组，然后再将数组反转，最后将反转之后的数组合并。 输入 {{ "Ground control to Major Tom." | split: "" | reverse | join: "" }} 输出 .moT rojaM ot lortnoc dnuorG round 将浮点数舍入到最近的整数，或者，如果传入的参数是一个数值的话，将浮点数舍入到参数指定的小数位。 输入 {{ 1.2 | round }} 输出 1 输入 {{ 2.7 | round }} 输出 3 输入 {{ 183.357 | round: 2 }} 输出 183.36 rstrip 将字符串右侧的所有空白字符（制表符 - tab、空格符 - space 和 回车符 - newline）删除。 输入 {{ " So much room for activities! " | rstrip }} 输出 So much room for activities! size 返回字符串中所包含的字符数或者数组中所包含的条目数量。size 还支持“点标记”（例如 {{ my_string.size }}）。这种用法便于你在标签（tag）中使用 size 过滤器，例如条件判断标签（tag）。 输入 {{ "Ground control to Major Tom." | size }} 输出 28 输入 {% assign my_array = "apples, oranges, peaches, plums" | split: ", " %} {{ my_array | size }} 输出 4 使用“点标记”： {% if site.pages.size &gt; 10 %} This is a big website! {% endif %} slice 只传入一个参数时将返回此参数作为下标所对应的单个字符。第二个参数是可选的，用于指定返回的子字符串的长度。 String indices are numbered starting from 0. 输入 {{ "Liquid" | slice: 0 }} 输出 L 输入 {{ "Liquid" | slice: 2 }} 输出 q 输入 {{ "Liquid" | slice: 2, 5 }} 输出 quid If the first parameter is a negative number, the indices are counted from the end of the string: 输入 {{ "Liquid" | slice: -3, 2 }} 输出 ui sort 对数组中的所有进行排序。排序后的数组是按照区分大小写的顺序排列的。 输入 {% assign my_array = "zebra, octopus, giraffe, Sally Snake" | split: ", " %} {{ my_array | sort | join: ", " }} 输出 Sally Snake, giraffe, octopus, zebra sort_natural 对数组进行排序，并且大小写无关。 输入 {% assign my_array = "zebra, octopus, giraffe, Sally Snake" | split: ", " %} {{ my_array | sort_natural | join: ", " }} 输出 giraffe, octopus, Sally Snake, zebra split 根据参数传入的分隔符将字符串分解为数组。split 通常被用于将以逗号为分隔符的字符串转换为数组。 输入 {% assign beatles = "John, Paul, George, Ringo" | split: ", " %} {% for member in beatles %} {{ member }} {% endfor %} 输出 John Paul George Ringo strip 删除字符串左右两侧的所有空白符号（包括制表符、空格、换行符）。对于字符串中间的空白符不做任何处理。 Input {{ " So much room for activities! " | strip }} Output So much room for activities! strip_html 从字符串中删除所有 HTML 标签。 输入 {{ "Have &lt;em&gt;you&lt;/em&gt; read &lt;strong&gt;Ulysses&lt;/strong&gt;?" | strip_html }} 输出 Have you read Ulysses? strip_newlines 从字符串中删除所有换行字符（newline character）。 输入 {% capture string_with_newlines %} Hello there {% endcapture %} {{ string_with_newlines | strip_newlines }} 输出 Hellothere times 将一个数乘以另一个数。 输入 {{ 3 | times: 2 }} 输出 6 输入 {{ 24 | times: 7 }} 输出 168 输入 {{ 183.357 | times: 12 }} 输出 2200.284 truncate truncate 将字符串截短为指定的字符个数。如果指定的字符数量小于字符串的长度，则会在字符串末尾添加一个省略号(…) 并将此省略号计入字符个数中。 输入 {{ "Ground control to Major Tom." | truncate: 20 }} 输出 Ground control to... 自定义省略号 truncate 还支持第二个可选参数，用于指定一个字符序列，此字符序列将被添加到截短字符串的后面。默认是省略号(…)，但是你可以按照你的需要传递一个新的。 第二个参数的长度将被计入第一个参数的字符个数中。例如，如果你希望将字符串截短为 10 个字符，并且使用由 3 个字符组成的省略号，这时，你需要将 truncate 的第一个参数设置为 13，是因为需要计入省略号的 3 个字符。 输入 {{ "Ground control to Major Tom." | truncate: 25, ", and so on" }} 输出 Ground control, and so on 无省略号 你可以将字符串按照第一个参数截短为指定长度，并且可以通过传递一个空字符作为第二个参数，从而让截短之后的字符串不显示省略号。 输入 {{ "Ground control to Major Tom." | truncate: 20, "" }} 输出 Ground control to Ma truncatewords 将字符串截短为指定的单词个数。如果指定的单词数量小于字符串中包含的单词个数，则会在字符串末尾添加一个省略号(…)。 输入 {{ "Ground control to Major Tom." | truncatewords: 3 }} 输出 Ground control to... 自定义省略号 truncatewords 还支持第二个可选参数，用于指定一个字符序列，此字符序列将被添加到截短字符串的后面。默认是省略号(…)，但是你可以按照你的需要传递一个新的。 输入 {{ "Ground control to Major Tom." | truncatewords: 3, "--" }} 输出 Ground control to-- 无省略号 如果你不希望在末尾添加省略号，可以将 truncatewords 的第二个参数设置为空字符串： 输入 {{ "Ground control to Major Tom." | truncatewords: 3, "" }} 输出 Ground control to uniq 删除数组中的所有冗余项。 输入 {% assign my_array = "ants, bugs, bees, bugs, ants" | split: ", " %} {{ my_array | uniq | join: ", " }} 输出 ants, bugs, bees upcase 将字符串中的每个字符都转换为大写形式。对于已经全是大写的字符串不做任何操作。 输入 {{ "Parker Moore" | upcase }} 输出 PARKER MOORE 输入 {{ "APPLE" | upcase }} 输出 APPLE url_decode 对于作为 URL 进行编码或通过 url_encode 编码的字符串进行解码。 输入 {{ "%27Stop%21%27+said+Fred" | url_decode }} 输出 'Stop!' said Fred url_encode 将字符串中非 URL 安全的字符转换为百分号编码（percent-encoded）的字符。 输入 {{ "john@liquid.com" | url_encode }} 输出 john%40liquid.com 输入 {{ "Tetsuro Takara" | url_encode }} 输出 Tetsuro+Takara]]></summary></entry><entry><title type="html">HCIA-Datacom</title><link href="http://localhost:4000/HCIA-Datacom-V1.0-%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81%E6%95%B0%E9%80%9A%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%9C%A8%E7%BA%BF%E8%AF%BE%E7%A8%8B/" rel="alternate" type="text/html" title="HCIA-Datacom" /><published>2022-04-03T00:00:00+08:00</published><updated>2022-04-03T00:00:00+08:00</updated><id>http://localhost:4000/HCIA-Datacom%20V1.0%20%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81%E6%95%B0%E9%80%9A%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%9C%A8%E7%BA%BF%E8%AF%BE%E7%A8%8B</id><content type="html" xml:base="http://localhost:4000/HCIA-Datacom-V1.0-%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81%E6%95%B0%E9%80%9A%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%9C%A8%E7%BA%BF%E8%AF%BE%E7%A8%8B/"><![CDATA[<h1 id="hcia-datacom-v10-华为认证数通工程师在线课程">HCIA-Datacom V1.0 华为认证数通工程师在线课程</h1>
+
+<h2 id="一数据通信网络基础">一、数据通信网络基础</h2>
+
+<h3 id="10-本章包含内容">1.0 本章包含内容</h3>
+
+<ul>
+  <li>网络通信基本概念</li>
+  <li>数据通信网络基本概念</li>
+  <li>网络类型与网络拓扑</li>
+  <li>网络工程与网络工程师定义</li>
+</ul>
+
+<h3 id="11-通信与网络">1.1 通信与网络</h3>
+
+<h4 id="111-网络通信的基本概念">1.1.1 网络通信的基本概念</h4>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403231555624.png" alt="image-20220403231555624" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403231920757.png" alt="image-20220403231920757" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403231959110.png" alt="image-20220403231959110" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232209192.png" alt="image-20220403232209192" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232223573.png" alt="image-20220403232223573" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232420999.png" alt="image-20220403232420999" /></p>
+
+<h4 id="112-数据通信网络基本概念">1.1.2 数据通信网络基本概念</h4>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232831806.png" alt="image-20220403232831806" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232930013.png" alt="image-20220403232930013" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403232944426.png" alt="image-20220403232944426" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233022080.png" alt="image-20220403233022080" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233150144.png" alt="image-20220403233150144" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233207646.png" alt="image-20220403233207646" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233302082.png" alt="image-20220403233302082" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233342962.png" alt="image-20220403233342962" /></p>
+
+<h3 id="12-网络类型与网络拓补">1.2 网络类型与网络拓补</h3>
+
+<h4 id="121-网络类型">1.2.1 网络类型</h4>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233703546.png" alt="image-20220403233703546" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233744935.png" alt="image-20220403233744935" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233754896.png" alt="image-20220403233754896" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403233859710.png" alt="image-20220403233859710" /></p>
+
+<h4 id="122-网络拓补">1.2.2 网络拓补</h4>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403235602794.png" alt="image-20220403235602794" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403235754019.png" alt="image-20220403235754019" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403235806784.png" alt="image-20220403235806784" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220403235815265.png" alt="image-20220403235815265" /></p>
+
+<h4 id="131-网络工程与网络工程师定义">1.3.1 网络工程与网络工程师定义</h4>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404012649194.png" alt="image-20220404012649194" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404012732002.png" alt="image-20220404012732002" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404012836901.png" alt="image-20220404012836901" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404012848504.png" alt="image-20220404012848504" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404013254453.png" alt="image-20220404013254453" /></p>
+
+<h2 id="二网络参考模型">二、网络参考模型</h2>
+
+<h3 id="20-本章包含内容">2.0 本章包含内容</h3>
+
+<ul>
+  <li>应用和数据</li>
+  <li>网络参考模型与标准协议</li>
+  <li>数据通信过程</li>
+</ul>
+
+<h3 id="21-应用和数据">2.1 应用和数据</h3>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404014712426.png" alt="image-20220404014712426" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404014751504.png" alt="image-20220404014751504" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404014816432.png" alt="image-20220404014816432" /></p>
+
+<h3 id="22-网络参考模型与标准协议">2.2 网络参考模型与标准协议</h3>
+
+<h4 id="221-osi参考模型">2.2.1 OSI参考模型</h4>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404015030906.png" alt="image-20220404015030906" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404015040437.png" alt="image-20220404015040437" /></p>
+
+<h4 id="222-tcpip参考模型与标准协议">2.2.2 TCP/IP参考模型与标准协议</h4>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404015208706.png" alt="image-20220404015208706" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404015223621.png" alt="image-20220404015223621" /></p>
+
+<p><img src="C:\Users\UnknownX\AppData\Roaming\Typora\typora-user-images\image-20220404015237144.png" alt="image-20220404015237144" /></p>]]></content><author><name>UnknownX1</name></author><category term="华为" /><summary type="html"><![CDATA[HCIA-Datacom V1.0 华为认证数通工程师在线课程 一、数据通信网络基础 1.0 本章包含内容 网络通信基本概念 数据通信网络基本概念 网络类型与网络拓扑 网络工程与网络工程师定义 1.1 通信与网络 1.1.1 网络通信的基本概念 1.1.2 数据通信网络基本概念 1.2 网络类型与网络拓补 1.2.1 网络类型 1.2.2 网络拓补 1.3.1 网络工程与网络工程师定义 二、网络参考模型 2.0 本章包含内容 应用和数据 网络参考模型与标准协议 数据通信过程 2.1 应用和数据 2.2 网络参考模型与标准协议 2.2.1 OSI参考模型 2.2.2 TCP/IP参考模型与标准协议]]></summary></entry><entry><title type="html">Java 基础语法</title><link href="http://localhost:4000/Java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="alternate" type="text/html" title="Java 基础语法" /><published>2022-04-02T00:00:00+08:00</published><updated>2022-04-02T00:00:00+08:00</updated><id>http://localhost:4000/Java%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/Java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"><![CDATA[<h1 id="java-基础语法">Java 基础语法</h1>
+
+<p>一个 Java 程序可以认为是一系列对象的集合，而这些对象通过调用彼此的方法来协同工作。下面简要介绍下类、对象、方法和实例变量的概念。</p>
+
+<ul>
+  <li><strong>对象</strong>：对象是类的一个实例，有状态和行为。例如，一条狗是一个对象，它的状态有：颜色、名字、品种；行为有：摇尾巴、叫、吃等。</li>
+  <li><strong>类</strong>：类是一个模板，它描述一类对象的行为和状态。</li>
+  <li><strong>方法</strong>：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的。</li>
+  <li><strong>实例变量</strong>：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。</li>
+</ul>
 
 <hr />
 
-<h2 id="链接">链接</h2>
+<h2 id="第一个java程序">第一个Java程序</h2>
 
-<p>内嵌链接：</p>
+<p>下面看一个简单的 Java 程序，它将输出字符串 <em>Hello World</em></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[链接文字](链接地址 "链接描述") 
-例如 [Google](http://google.com/ "Google")，[Yahoo](http://search.yahoo.com/ "Yahoo Search")，[MSN](http://search.msn.com/ "MSN Search").
+<h2 id="实例">实例</h2>
 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+    <span class="cm">/* 第一个Java程序
+     * 它将输出字符串 Hello World
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World"</span><span class="o">);</span> <span class="c1">// 输出 Hello World</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
-<p>效果：</p>
+<p><a href="https://www.runoob.com/try/runcode.php?filename=HelloWorld2&amp;type=java">运行实例 »</a></p>
 
-<p><a href="链接地址" title="链接描述">链接文字</a> 
-例如 <a href="http://google.com/" title="Google">Google</a>，<a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a>，<a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/662E827A-FA32-4464-B0BD-40087F429E98.jpg" alt="img" /></p>
 
-<p>如果直接以链接地址作为链接文本，可以用如下快捷写法：</p>
+<p>下面将逐步介绍如何保存、编译以及运行这个程序：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;http://www.shengbin.me&gt; 效果：
+<ul>
+  <li>打开代码编辑器，把上面的代码添加进去；</li>
+  <li>把文件名保存为：HelloWorld.java；</li>
+  <li>打开 cmd 命令窗口，进入目标文件所在的位置，假设是 C:\</li>
+  <li>在命令行窗口输入 <strong>javac HelloWorld.java</strong> 按下回车键编译代码。如果代码没有错误，cmd 命令提示符会进入下一行（假设环境变量都设置好了）。</li>
+  <li>再键输入 <strong>java HelloWorld</strong> 按下回车键就可以运行程序了</li>
+</ul>
 
+<p>你将会在窗口看到 Hello World</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ javac HelloWorld.java
+$ java HelloWorld 
+Hello World
 </code></pre></div></div>
 
-<p><a href="http://www.shengbin.me">http://www.shengbin.me</a></p>
+<p>如果遇到编码问题，我们可以使用 <strong>-encoding</strong> 选项设置 <strong>utf-8</strong> 来编译：</p>
 
-<h2 id="强调">强调</h2>
-
-<p>单个<code class="language-plaintext highlighter-rouge">*</code>或<code class="language-plaintext highlighter-rouge">_</code>产生斜体，两个（<code class="language-plaintext highlighter-rouge">**</code>、<code class="language-plaintext highlighter-rouge">__</code>）则产生粗体。例如：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*斜体* _斜体_
-
-**粗体** **粗体**
-
-***又粗又斜*** ___又粗又斜___
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javac -encoding UTF-8 HelloWorld.java 
+java HelloWorld 
 </code></pre></div></div>
 
-<p>效果：</p>
+<p>Gif 图演示：</p>
 
-<p><em>斜体</em> <em>斜体</em></p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-HelloWorld.gif" alt="img" /></p>
 
-<p><strong>粗体</strong> <strong>粗体</strong></p>
+<hr />
 
-<p><strong><em>又粗又斜</em></strong> <strong><em>又粗又斜</em></strong></p>
+<h2 id="基本语法">基本语法</h2>
 
-<h2 id="内嵌代码">内嵌代码</h2>
+<p>编写 Java 程序时，应注意以下几点：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>内嵌代码 `天地玄黄`
+<ul>
+  <li><strong>大小写敏感</strong>：Java 是大小写敏感的，这就意味着标识符 Hello 与 hello 是不同的。</li>
+  <li><strong>类名</strong>：对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如 <strong>MyFirstJavaClass</strong> 。</li>
+  <li><strong>方法名</strong>：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。</li>
+  <li><strong>源文件名</strong>：源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记 Java 是大小写敏感的），文件名的后缀为 <strong>.java</strong>。（如果文件名和类名不相同则会导致编译错误）。</li>
+  <li><strong>主方法入口</strong>：所有的 Java 程序由 <strong>public static void main(String[] args)</strong> 方法开始执行。</li>
+</ul>
 
+<hr />
+
+<h2 id="java-标识符">Java 标识符</h2>
+
+<p>Java 所有的组成部分都需要名字。类名、变量名以及方法名都被称为标识符。</p>
+
+<p>关于 Java 标识符，有以下几点需要注意：</p>
+
+<ul>
+  <li>所有的标识符都应该以字母（A-Z 或者 a-z）,美元符（$）、或者下划线（_）开始</li>
+  <li>首字符之后可以是字母（A-Z 或者 a-z）,美元符（$）、下划线（_）或数字的任何字符组合</li>
+  <li>关键字不能用作标识符</li>
+  <li>标识符是大小写敏感的</li>
+  <li>合法标识符举例：age、$salary、_value、__1_value</li>
+  <li>非法标识符举例：123abc、-salary</li>
+</ul>
+
+<hr />
+
+<h2 id="java修饰符">Java修饰符</h2>
+
+<p>像其他语言一样，Java可以使用修饰符来修饰类中方法和属性。主要有两类修饰符：</p>
+
+<ul>
+  <li>访问控制修饰符 : default, public , protected, private</li>
+  <li>非访问控制修饰符 : final, abstract, static, synchronized</li>
+</ul>
+
+<p>在后面的章节中我们会深入讨论 Java 修饰符。</p>
+
+<hr />
+
+<h2 id="java-变量">Java 变量</h2>
+
+<p>Java 中主要有如下几种类型的变量</p>
+
+<ul>
+  <li>局部变量</li>
+  <li>类变量（静态变量）</li>
+  <li>成员变量（非静态变量）</li>
+</ul>
+
+<hr />
+
+<h2 id="java-数组">Java 数组</h2>
+
+<p>数组是储存在堆上的对象，可以保存多个同类型变量。在后面的章节中，我们将会学到如何声明、构造以及初始化一个数组。</p>
+
+<hr />
+
+<h2 id="java-枚举">Java 枚举</h2>
+
+<p>Java 5.0引入了枚举，枚举限制变量只能是预先设定好的值。使用枚举可以减少代码中的 bug。</p>
+
+<p>例如，我们为果汁店设计一个程序，它将限制果汁为小杯、中杯、大杯。这就意味着它不允许顾客点除了这三种尺寸外的果汁。</p>
+
+<h3 id="实例-1">实例</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">FreshJuice</span> <span class="o">{</span>
+   <span class="kd">enum</span> <span class="nc">FreshJuiceSize</span><span class="o">{</span> <span class="no">SMALL</span><span class="o">,</span> <span class="no">MEDIUM</span> <span class="o">,</span> <span class="no">LARGE</span> <span class="o">}</span>
+   <span class="nc">FreshJuiceSize</span> <span class="n">size</span><span class="o">;</span>
+<span class="o">}</span>
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FreshJuiceTest</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+      <span class="nc">FreshJuice</span> <span class="n">juice</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FreshJuice</span><span class="o">();</span>
+      <span class="n">juice</span><span class="o">.</span><span class="na">size</span> <span class="o">=</span> <span class="nc">FreshJuice</span><span class="o">.</span><span class="na">FreshJuiceSize</span><span class="o">.</span><span class="na">MEDIUM</span>  <span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
-<p>效果：</p>
+<p><strong>注意：</strong>枚举可以单独声明或者声明在类里面。方法、变量、构造函数也可以在枚举中定义。</p>
 
-<p>内嵌代码 <code class="language-plaintext highlighter-rouge">天地玄黄</code></p>
+<hr />
 
-<h2 id="图片">图片</h2>
+<h2 id="java-关键字">Java 关键字</h2>
 
-<p>语法和链接相似，只是前面多个“!”</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![替代文字](图片url "图片说明")
+<p>下面列出了 Java 关键字。这些保留字不能用于常量、变量、和任何标识符的名称。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">类别</th>
+      <th style="text-align: left">关键字</th>
+      <th style="text-align: left">说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">访问控制</td>
+      <td style="text-align: left">private</td>
+      <td style="text-align: left">私有的</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">protected</td>
+      <td style="text-align: left">受保护的</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">public</td>
+      <td style="text-align: left">公共的</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">default</td>
+      <td style="text-align: left">默认</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">类、方法和变量修饰符</td>
+      <td style="text-align: left">abstract</td>
+      <td style="text-align: left">声明抽象</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">class</td>
+      <td style="text-align: left">类</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">extends</td>
+      <td style="text-align: left">扩充,继承</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">final</td>
+      <td style="text-align: left">最终值,不可改变的</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">implements</td>
+      <td style="text-align: left">实现（接口）</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">interface</td>
+      <td style="text-align: left">接口</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">native</td>
+      <td style="text-align: left">本地，原生方法（非 Java 实现）</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">new</td>
+      <td style="text-align: left">新,创建</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">static</td>
+      <td style="text-align: left">静态</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">strictfp</td>
+      <td style="text-align: left">严格,精准</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">synchronized</td>
+      <td style="text-align: left">线程,同步</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">transient</td>
+      <td style="text-align: left">短暂</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">volatile</td>
+      <td style="text-align: left">易失</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">程序控制语句</td>
+      <td style="text-align: left">break</td>
+      <td style="text-align: left">跳出循环</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">case</td>
+      <td style="text-align: left">定义一个值以供 switch 选择</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">continue</td>
+      <td style="text-align: left">继续</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">default</td>
+      <td style="text-align: left">默认</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">do</td>
+      <td style="text-align: left">运行</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">else</td>
+      <td style="text-align: left">否则</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">for</td>
+      <td style="text-align: left">循环</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">if</td>
+      <td style="text-align: left">如果</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">instanceof</td>
+      <td style="text-align: left">实例</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">return</td>
+      <td style="text-align: left">返回</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">switch</td>
+      <td style="text-align: left">根据值选择执行</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">while</td>
+      <td style="text-align: left">循环</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">错误处理</td>
+      <td style="text-align: left">assert</td>
+      <td style="text-align: left">断言表达式是否为真</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">catch</td>
+      <td style="text-align: left">捕捉异常</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">finally</td>
+      <td style="text-align: left">有没有异常都执行</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">throw</td>
+      <td style="text-align: left">抛出一个异常对象</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">throws</td>
+      <td style="text-align: left">声明一个异常可能被抛出</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">try</td>
+      <td style="text-align: left">捕获异常</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">包相关</td>
+      <td style="text-align: left">import</td>
+      <td style="text-align: left">引入</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">package</td>
+      <td style="text-align: left">包</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">基本类型</td>
+      <td style="text-align: left">boolean</td>
+      <td style="text-align: left">布尔型</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">byte</td>
+      <td style="text-align: left">字节型</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">char</td>
+      <td style="text-align: left">字符型</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">double</td>
+      <td style="text-align: left">双精度浮点</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">float</td>
+      <td style="text-align: left">单精度浮点</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">int</td>
+      <td style="text-align: left">整型</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">long</td>
+      <td style="text-align: left">长整型</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">short</td>
+      <td style="text-align: left">短整型</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">变量引用</td>
+      <td style="text-align: left">super</td>
+      <td style="text-align: left">父类,超类</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">this</td>
+      <td style="text-align: left">本类</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">void</td>
+      <td style="text-align: left">无返回值</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">保留关键字</td>
+      <td style="text-align: left">goto</td>
+      <td style="text-align: left">是关键字，但不能使用</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">const</td>
+      <td style="text-align: left">是关键字，但不能使用</td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>注意：</strong>Java 的 null 不是关键字，类似于 true 和 false，它是一个字面常量，不允许作为标识符使用。</p>
+
+<hr />
+
+<h2 id="java注释">Java注释</h2>
+
+<p>类似于 C/C++、Java 也支持单行以及多行注释。注释中的字符将被 Java 编译器忽略。</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+   <span class="cm">/* 这是第一个Java程序
+    * 它将输出 Hello World
+    * 这是一个多行注释的示例
+    */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+       <span class="c1">// 这是单行注释的示例</span>
+       <span class="cm">/* 这个也是单行注释的示例 */</span>
+       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World"</span><span class="o">);</span> 
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
-<h2 id="转义字符">转义字符</h2>
+<hr />
 
-<p>如果需要使用以上标记字符而不被Markdown理解为格式标记，需要用<code class="language-plaintext highlighter-rouge">\</code>转义：例如<code class="language-plaintext highlighter-rouge">\\</code>，效果为\。</p>]]></content><author><name></name></author><category term="sample" /><category term="markdown" /><summary type="html"><![CDATA[本中文版Markdown语法简介来自博客 https://blog.shengbin.me/posts/markdown-syntax，并由我完成了汉化。其中的站位文字来自狗屁不通文章生成器。 Markdown语法的完整文档在这里。下面整理的这些为了方便写博客时参考。 分段与分行 以一个或多个空行来隔开段落；以两个或多个空格来段内换行。 标题 这是一级标题 ============= 这是二级标题 ------------- # 一级标题 ## 二级标题 ###### 六级标题 引用 在每一行前面写一个&gt;： &gt; 这是一个引用段落。 &gt; 一般来讲，我们都必须务必慎重的考虑考虑。 了解清楚标记语言到底是一种怎么样的存在，是解决一切问题的关键。 &gt; 一般来说， 莎士比亚曾经说过，抛弃时间的人，时间也抛弃他。这似乎解答了我的疑惑。 &gt; &gt; 笛卡儿曾经提到过，读一切好书，就是和许多高尚的人谈话。带着这句话，我们还要更加慎重的审视这个问题： &gt; 现在，解决标记语言的问题，是非常非常重要的。 效果： 这是一个引用段落。 一般来讲，我们都必须务必慎重的考虑考虑。 了解清楚标记语言到底是一种怎么样的存在，是解决一切问题的关键。 一般来说， 莎士比亚曾经说过，抛弃时间的人，时间也抛弃他。这似乎解答了我的疑惑。 笛卡儿曾经提到过，读一切好书，就是和许多高尚的人谈话。带着这句话，我们还要更加慎重的审视这个问题： 现在，解决标记语言的问题，是非常非常重要的。 或者在每一段前面写一个&gt;： &gt; 这是一个引用段落。一般来讲，我们都必须务必慎重的考虑考虑。 了解清楚标记语言到底是一种怎么样的存在，是解决一切问题的关键。 一般来说， 莎士比亚曾经说过，抛弃时间的人，时间也抛弃他。这似乎解答了我的疑惑。 &gt; 笛卡儿曾经提到过，读一切好书，就是和许多高尚的人谈话。带着这句话，我们还要更加慎重的审视这个问题： 现在，解决标记语言的问题，是非常非常重要的。 多重引用 &gt; 这是第一层引用 &gt; &gt; &gt; 这是第二层引用 &gt; &gt; 回到第一层 效果： 这是第一层引用 这是第二层引用 回到第一层 列表 列表项占一行，以*、+、-开头即可： * 甲子 * 乙丑 * 丙寅 效果： 甲子 乙丑 丙寅 有序列表只需要将上述标记符换成数字加句点。而且顺序由书写顺序决定，与数字无关，但数字需要从1开始。例如： 1. 天 3. 地 2. 人 效果： 天 地 人 每一个列表项可以多行： * 而这些并不是完全重要，更加重要的问题是，可是，即使是这样，标记语言的出现仍然代表了一定的意义。叔本华说过一句富有哲理的话，意志是一个强壮的盲人，倚靠在明眼的跛子肩上。这启发了我，要想清楚，标记语言，到底是一种怎么样的存在。 * 伏尔泰说过一句富有哲理的话，坚持意志伟大的事业需要始终不渝的精神。这启发了我，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。那么，标记语言因何而发生？了解清楚标记语言到底是一种怎么样的存在，是解决一切问题的关键。而这些并不是完全重要，更加重要的问题是，就我个人来说，标记语言对我的意义，不能不说非常重大。就我个人来说，标记语言对我的意义，不能不说非常重大。我们不得不面对一个非常尴尬的事实，那就是，总结的来说，标记语言因何而发生？ 效果： 而这些并不是完全重要，更加重要的问题是，可是，即使是这样，标记语言的出现仍然代表了一定的意义。叔本华说过一句富有哲理的话，意志是一个强壮的盲人，倚靠在明眼的跛子肩上。这启发了我，要想清楚，标记语言，到底是一种怎么样的存在。 伏尔泰说过一句富有哲理的话，坚持意志伟大的事业需要始终不渝的精神。这启发了我，本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。那么，标记语言因何而发生？了解清楚标记语言到底是一种怎么样的存在，是解决一切问题的关键。而这些并不是完全重要，更加重要的问题是，就我个人来说，标记语言对我的意义，不能不说非常重大。就我个人来说，标记语言对我的意义，不能不说非常重大。我们不得不面对一个非常尴尬的事实，那就是，总结的来说，标记语言因何而发生？ 代码块 每一行前面缩进四个或以上个空格，就认为是开始了一段代码块。代码块内原样输出。 这是一个普通段落 这是一个代码块 效果： 这是一个普通段落 这是一个代码块 横线 三个或更多个*、-（它们之间可以有空格）会产生横线： * * * 效果： 链接 内嵌链接： [链接文字](链接地址 "链接描述") 例如 [Google](http://google.com/ "Google")，[Yahoo](http://search.yahoo.com/ "Yahoo Search")，[MSN](http://search.msn.com/ "MSN Search"). 效果： 链接文字 例如 Google，Yahoo，MSN. 如果直接以链接地址作为链接文本，可以用如下快捷写法： &lt;http://www.shengbin.me&gt; 效果： http://www.shengbin.me 强调 单个*或_产生斜体，两个（**、__）则产生粗体。例如： *斜体* _斜体_ **粗体** **粗体** ***又粗又斜*** ___又粗又斜___ 效果： 斜体 斜体 粗体 粗体 又粗又斜 又粗又斜 内嵌代码 内嵌代码 `天地玄黄` 效果： 内嵌代码 天地玄黄 图片 语法和链接相似，只是前面多个“!” ![替代文字](图片url "图片说明") 转义字符 如果需要使用以上标记字符而不被Markdown理解为格式标记，需要用\转义：例如\\，效果为\。]]></summary></entry></feed>
+<h2 id="java-空行">Java 空行</h2>
+
+<p>空白行或者有注释的行，Java 编译器都会忽略掉。</p>
+
+<hr />
+
+<h2 id="继承">继承</h2>
+
+<p>在 Java 中，一个类可以由其他类派生。如果你要创建一个类，而且已经存在一个类具有你所需要的属性或方法，那么你可以将新创建的类继承该类。</p>
+
+<p>利用继承的方法，可以重用已存在类的方法和属性，而不用重写这些代码。被继承的类称为超类（super class），派生类称为子类（sub class）。</p>
+
+<hr />
+
+<h2 id="接口">接口</h2>
+
+<p>在 Java 中，接口可理解为对象间相互通信的协议。接口在继承中扮演着很重要的角色。</p>
+
+<p>接口只定义派生要用到的方法，但是方法的具体实现完全取决于派生类。</p>
+
+<hr />
+
+<h2 id="java-源程序与编译型运行区别">Java 源程序与编译型运行区别</h2>
+
+<p>如下图所示：</p>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/ZSSDMld.png" alt="img" /></p>
+
+<p>下一节介绍 Java 编程中的类和对象。之后你将会对 Java 中的类和对象有更清楚的认识。</p>]]></content><author><name>UnknownX1</name></author><category term="Java" /><summary type="html"><![CDATA[Java 基础语法 一个 Java 程序可以认为是一系列对象的集合，而这些对象通过调用彼此的方法来协同工作。下面简要介绍下类、对象、方法和实例变量的概念。 对象：对象是类的一个实例，有状态和行为。例如，一条狗是一个对象，它的状态有：颜色、名字、品种；行为有：摇尾巴、叫、吃等。 类：类是一个模板，它描述一类对象的行为和状态。 方法：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的。 实例变量：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。 第一个Java程序 下面看一个简单的 Java 程序，它将输出字符串 Hello World 实例 public class HelloWorld { /* 第一个Java程序 * 它将输出字符串 Hello World */ public static void main(String[] args) { System.out.println("Hello World"); // 输出 Hello World } } 运行实例 » 下面将逐步介绍如何保存、编译以及运行这个程序： 打开代码编辑器，把上面的代码添加进去； 把文件名保存为：HelloWorld.java； 打开 cmd 命令窗口，进入目标文件所在的位置，假设是 C:\ 在命令行窗口输入 javac HelloWorld.java 按下回车键编译代码。如果代码没有错误，cmd 命令提示符会进入下一行（假设环境变量都设置好了）。 再键输入 java HelloWorld 按下回车键就可以运行程序了 你将会在窗口看到 Hello World $ javac HelloWorld.java $ java HelloWorld Hello World 如果遇到编码问题，我们可以使用 -encoding 选项设置 utf-8 来编译： javac -encoding UTF-8 HelloWorld.java java HelloWorld Gif 图演示： 基本语法 编写 Java 程序时，应注意以下几点： 大小写敏感：Java 是大小写敏感的，这就意味着标识符 Hello 与 hello 是不同的。 类名：对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如 MyFirstJavaClass 。 方法名：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。 源文件名：源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记 Java 是大小写敏感的），文件名的后缀为 .java。（如果文件名和类名不相同则会导致编译错误）。 主方法入口：所有的 Java 程序由 public static void main(String[] args) 方法开始执行。 Java 标识符 Java 所有的组成部分都需要名字。类名、变量名以及方法名都被称为标识符。 关于 Java 标识符，有以下几点需要注意： 所有的标识符都应该以字母（A-Z 或者 a-z）,美元符（$）、或者下划线（_）开始 首字符之后可以是字母（A-Z 或者 a-z）,美元符（$）、下划线（_）或数字的任何字符组合 关键字不能用作标识符 标识符是大小写敏感的 合法标识符举例：age、$salary、_value、__1_value 非法标识符举例：123abc、-salary Java修饰符 像其他语言一样，Java可以使用修饰符来修饰类中方法和属性。主要有两类修饰符： 访问控制修饰符 : default, public , protected, private 非访问控制修饰符 : final, abstract, static, synchronized 在后面的章节中我们会深入讨论 Java 修饰符。 Java 变量 Java 中主要有如下几种类型的变量 局部变量 类变量（静态变量） 成员变量（非静态变量） Java 数组 数组是储存在堆上的对象，可以保存多个同类型变量。在后面的章节中，我们将会学到如何声明、构造以及初始化一个数组。 Java 枚举 Java 5.0引入了枚举，枚举限制变量只能是预先设定好的值。使用枚举可以减少代码中的 bug。 例如，我们为果汁店设计一个程序，它将限制果汁为小杯、中杯、大杯。这就意味着它不允许顾客点除了这三种尺寸外的果汁。 实例 class FreshJuice { enum FreshJuiceSize{ SMALL, MEDIUM , LARGE } FreshJuiceSize size; } public class FreshJuiceTest { public static void main(String[] args){ FreshJuice juice = new FreshJuice(); juice.size = FreshJuice.FreshJuiceSize.MEDIUM ; } } 注意：枚举可以单独声明或者声明在类里面。方法、变量、构造函数也可以在枚举中定义。 Java 关键字 下面列出了 Java 关键字。这些保留字不能用于常量、变量、和任何标识符的名称。 类别 关键字 说明 访问控制 private 私有的 protected 受保护的   public 公共的   default 默认   类、方法和变量修饰符 abstract 声明抽象 class 类   extends 扩充,继承   final 最终值,不可改变的   implements 实现（接口）   interface 接口   native 本地，原生方法（非 Java 实现）   new 新,创建   static 静态   strictfp 严格,精准   synchronized 线程,同步   transient 短暂   volatile 易失   程序控制语句 break 跳出循环 case 定义一个值以供 switch 选择   continue 继续   default 默认   do 运行   else 否则   for 循环   if 如果   instanceof 实例   return 返回   switch 根据值选择执行   while 循环   错误处理 assert 断言表达式是否为真 catch 捕捉异常   finally 有没有异常都执行   throw 抛出一个异常对象   throws 声明一个异常可能被抛出   try 捕获异常   包相关 import 引入 package 包   基本类型 boolean 布尔型 byte 字节型   char 字符型   double 双精度浮点   float 单精度浮点   int 整型   long 长整型   short 短整型   变量引用 super 父类,超类 this 本类   void 无返回值   保留关键字 goto 是关键字，但不能使用 const 是关键字，但不能使用   注意：Java 的 null 不是关键字，类似于 true 和 false，它是一个字面常量，不允许作为标识符使用。 Java注释 类似于 C/C++、Java 也支持单行以及多行注释。注释中的字符将被 Java 编译器忽略。 public class HelloWorld { /* 这是第一个Java程序 * 它将输出 Hello World * 这是一个多行注释的示例 */ public static void main(String[] args){ // 这是单行注释的示例 /* 这个也是单行注释的示例 */ System.out.println("Hello World"); } } Java 空行 空白行或者有注释的行，Java 编译器都会忽略掉。 继承 在 Java 中，一个类可以由其他类派生。如果你要创建一个类，而且已经存在一个类具有你所需要的属性或方法，那么你可以将新创建的类继承该类。 利用继承的方法，可以重用已存在类的方法和属性，而不用重写这些代码。被继承的类称为超类（super class），派生类称为子类（sub class）。 接口 在 Java 中，接口可理解为对象间相互通信的协议。接口在继承中扮演着很重要的角色。 接口只定义派生要用到的方法，但是方法的具体实现完全取决于派生类。 Java 源程序与编译型运行区别 如下图所示： 下一节介绍 Java 编程中的类和对象。之后你将会对 Java 中的类和对象有更清楚的认识。]]></summary></entry><entry><title type="html">Java 开发环境配置</title><link href="http://localhost:4000/Java-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="alternate" type="text/html" title="Java 开发环境配置" /><published>2022-04-02T00:00:00+08:00</published><updated>2022-04-02T00:00:00+08:00</updated><id>http://localhost:4000/Java%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE</id><content type="html" xml:base="http://localhost:4000/Java-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"><![CDATA[<h1 id="java-开发环境配置">Java 开发环境配置</h1>
+
+<p>在本章节中我们将为大家介绍如何搭建Java开发环境。</p>
+
+<ul>
+  <li><a href="https://www.runoob.com/java/java-environment-setup.html#win-install">Windows 上安装开发环境</a></li>
+  <li><a href="https://www.runoob.com/java/java-environment-setup.html#linux-install">Linux 上安装开发环境</a></li>
+  <li><a href="https://www.runoob.com/java/java-environment-setup.html#eclipse-install">安装 Eclipse 运行 Java</a></li>
+</ul>
+
+<hr />
+
+<h2 id="window系统安装java">window系统安装java</h2>
+
+<h3 id="下载jdk">下载JDK</h3>
+
+<p>首先我们需要下载 java 开发工具包 JDK，下载地址：https://www.oracle.com/java/technologies/downloads/，在下载页面中根据自己的系统选择对应的版本，本文以 Window 64位系统为例：</p>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/jdk-download.png" alt="img" /></p>
+
+<p>下载后 JDK 的安装根据提示进行，还有安装 JDK 的时候也会安装 JRE，一并安装就可以了。</p>
+
+<p>安装JDK，安装过程中可以自定义安装目录等信息，例如我们选择安装目录为 <strong>C:\Program Files (x86)\Java\jdk1.8.0_91</strong>。</p>
+
+<h3 id="配置环境变量">配置环境变量</h3>
+
+<p>1.安装完成后，右击”我的电脑”，点击”属性”，选择”高级系统设置”；</p>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/win-java1.png" alt="img" /></p>
+
+<p>2.选择”高级”选项卡，点击”环境变量”；</p>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-win2.png" alt="img" /></p>
+
+<p>然后就会出现如下图所示的画面：</p>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-win3.png" alt="img" /></p>
+
+<p>在 “系统变量” 中设置 3 项属性，JAVA_HOME、PATH、CLASSPATH(大小写无所谓),若已存在则点击”编辑”，不存在则点击”新建”。</p>
+
+<blockquote>
+  <p><strong>注意：</strong>如果使用 1.5 以上版本的 JDK，不用设置 CLASSPATH 环境变量，也可以正常编译和运行 Java 程序。</p>
+</blockquote>
+
+<p>变量设置参数如下：</p>
+
+<ul>
+  <li>变量名：<strong>JAVA_HOME</strong></li>
+  <li>
+    <p>变量值：<strong>C:\Program Files (x86)\Java\jdk1.8.0_91</strong>     // 要根据自己的实际路径配置</p>
+  </li>
+  <li>变量名：<strong>CLASSPATH</strong></li>
+  <li>
+    <p>变量值：<strong>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</strong>     //记得前面有个”.”</p>
+  </li>
+  <li>变量名：<strong>Path</strong></li>
+  <li>变量值：<strong>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</strong></li>
+</ul>
+
+<h3 id="java_home-设置">JAVA_HOME 设置</h3>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-win4.png" alt="img" /></p>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-win5.png" alt="img" /></p>
+
+<h3 id="path设置">PATH设置</h3>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-win6.png" alt="img" /></p>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-win7.png" alt="img" /></p>
+
+<blockquote>
+  <p><strong>注意：</strong>在 Windows10 中，Path 变量里是分条显示的，我们需要将 <strong>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</strong> 分开添加，否则无法识别：</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%JAVA_HOME%\bin;
+%JAVA_HOME%\jre\bin;
+</code></pre></div>  </div>
+
+  <p><img src="https://www.runoob.com/wp-content/uploads/2013/12/44A70696-B2E6-4055-B88F-7FC0222DCCA4.png" alt="img" /></p>
+
+  <p>更多内容可参考：<a href="https://www.runoob.com/w3cnote/windows10-java-setup.html">Windows 10 配置Java 环境变量</a></p>
+</blockquote>
+
+<h3 id="classpath-设置">CLASSPATH 设置</h3>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-win8.png" alt="img" /></p>
+
+<p>这是 Java 的环境配置，配置完成后，你可以启动 Eclipse 来编写代码，它会自动完成java环境的配置。</p>
+
+<h3 id="测试jdk是否安装成功">测试JDK是否安装成功</h3>
+
+<p>1、”开始”-&gt;”运行”，键入”cmd”；</p>
+
+<p>2、键入命令: <strong>java -version</strong>、<strong>java</strong>、<strong>javac</strong> 几个命令，出现以下信息，说明环境变量配置成功；</p>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-win9.png" alt="img" /></p>
+
+<hr />
+
+<h2 id="linuxunixsolarisfreebsd环境变量设置">Linux，UNIX，Solaris，FreeBSD环境变量设置</h2>
+
+<p>环境变量PATH应该设定为指向Java二进制文件安装的位置。如果设置遇到困难，请参考shell文档。</p>
+
+<p>例如，假设你使用bash作为shell，你可以把下面的内容添加到你的 .bashrc文件结尾: export PATH=/path/to/java:$PATH</p>
+
+<hr />
+
+<h2 id="流行java开发工具">流行JAVA开发工具</h2>
+
+<p>正所谓工欲善其事必先利其器，我们在开发java语言过程中同样需要一款不错的开发工具，目前市场上的IDE很多，本文为大家推荐以下下几款java开发工具：</p>
+
+<ul>
+  <li>
+    <p><strong>Eclipse（推荐）:</strong>另一个免费开源的java IDE，下载地址： http://www.eclipse.org/downloads/packages/</p>
+
+    <p>选择 <strong>Eclipse IDE for Java Developers</strong>：
+<img src="https://www.runoob.com/wp-content/uploads/2013/12/5A92DEAE-EFB9-493D-AC4D-808E529B533C.jpg" alt="img" /></p>
+  </li>
+  <li>
+    <p><strong>JetBrains</strong> 的 IDEA， 现在很多人开始使用了，功能很强大，下载地址：https://www.jetbrains.com/idea/download/</p>
+  </li>
+  <li>
+    <p><strong>Notepad++ :</strong> Notepad++ 是在微软视窗环境之下的一个免费的代码编辑器，下载地址：<a href="http://notepad-plus-plus.org/"> http://notepad-plus-plus.org/</a></p>
+  </li>
+  <li>
+    <p><strong>Netbeans:</strong>开源免费的java IDE，下载地址： http://www.netbeans.org/index.html</p>
+  </li>
+</ul>
+
+<h3 id="使用-eclipse-运行第一个-java-程序">使用 Eclipse 运行第一个 Java 程序</h3>
+
+<p>视频演示如下所示：</p>
+
+<video controls="" __idm_id__="1482753" style="display: block; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, &quot;Noto Sans CJK SC&quot;, &quot;WenQuanYi Micro Hei&quot;, Arial, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; width: 536.23px;"></video>
+
+<p>HelloWorld.java 文件代码：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello World"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>UnknownX1</name></author><category term="Java" /><summary type="html"><![CDATA[Java 开发环境配置 在本章节中我们将为大家介绍如何搭建Java开发环境。 Windows 上安装开发环境 Linux 上安装开发环境 安装 Eclipse 运行 Java window系统安装java 下载JDK 首先我们需要下载 java 开发工具包 JDK，下载地址：https://www.oracle.com/java/technologies/downloads/，在下载页面中根据自己的系统选择对应的版本，本文以 Window 64位系统为例： 下载后 JDK 的安装根据提示进行，还有安装 JDK 的时候也会安装 JRE，一并安装就可以了。 安装JDK，安装过程中可以自定义安装目录等信息，例如我们选择安装目录为 C:\Program Files (x86)\Java\jdk1.8.0_91。 配置环境变量 1.安装完成后，右击”我的电脑”，点击”属性”，选择”高级系统设置”； 2.选择”高级”选项卡，点击”环境变量”； 然后就会出现如下图所示的画面： 在 “系统变量” 中设置 3 项属性，JAVA_HOME、PATH、CLASSPATH(大小写无所谓),若已存在则点击”编辑”，不存在则点击”新建”。 注意：如果使用 1.5 以上版本的 JDK，不用设置 CLASSPATH 环境变量，也可以正常编译和运行 Java 程序。 变量设置参数如下： 变量名：JAVA_HOME 变量值：C:\Program Files (x86)\Java\jdk1.8.0_91 // 要根据自己的实际路径配置 变量名：CLASSPATH 变量值：.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar; //记得前面有个”.” 变量名：Path 变量值：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin; JAVA_HOME 设置 PATH设置 注意：在 Windows10 中，Path 变量里是分条显示的，我们需要将 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin; 分开添加，否则无法识别： %JAVA_HOME%\bin; %JAVA_HOME%\jre\bin; 更多内容可参考：Windows 10 配置Java 环境变量 CLASSPATH 设置 这是 Java 的环境配置，配置完成后，你可以启动 Eclipse 来编写代码，它会自动完成java环境的配置。 测试JDK是否安装成功 1、”开始”-&gt;”运行”，键入”cmd”； 2、键入命令: java -version、java、javac 几个命令，出现以下信息，说明环境变量配置成功； Linux，UNIX，Solaris，FreeBSD环境变量设置 环境变量PATH应该设定为指向Java二进制文件安装的位置。如果设置遇到困难，请参考shell文档。 例如，假设你使用bash作为shell，你可以把下面的内容添加到你的 .bashrc文件结尾: export PATH=/path/to/java:$PATH 流行JAVA开发工具 正所谓工欲善其事必先利其器，我们在开发java语言过程中同样需要一款不错的开发工具，目前市场上的IDE很多，本文为大家推荐以下下几款java开发工具： Eclipse（推荐）:另一个免费开源的java IDE，下载地址： http://www.eclipse.org/downloads/packages/ 选择 Eclipse IDE for Java Developers： JetBrains 的 IDEA， 现在很多人开始使用了，功能很强大，下载地址：https://www.jetbrains.com/idea/download/ Notepad++ : Notepad++ 是在微软视窗环境之下的一个免费的代码编辑器，下载地址： http://notepad-plus-plus.org/ Netbeans:开源免费的java IDE，下载地址： http://www.netbeans.org/index.html 使用 Eclipse 运行第一个 Java 程序 视频演示如下所示： HelloWorld.java 文件代码： public class HelloWorld { public static void main(String[] args) { System.out.println("Hello World"); } }]]></summary></entry></feed>
