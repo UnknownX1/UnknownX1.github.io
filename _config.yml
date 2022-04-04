@@ -75,13 +75,14 @@ footer-text: Copyright (c) 2022
 #
 
 # 输入Disqus shortname，即可添加评论区，请查阅文档，设置自己的disqus站点，不要继续使用我的站点loffer
-disqus: #shortname
+disqus:
+ #shortname
 
 # 输入Gitalk相关设定，即可添加评论区，具体请看教程
 gitalk:
   clientID: 4dc4b2c7c69bb80e7e6e
   clientSecret: af399b13fe2f430cc65ab7954832ef97c0b835ee
-  repo: https://unknownx1.github.io/
+  repo: unknownx1.github.io
   owner: unknownx1
   proxy: 
 
