@@ -81,7 +81,7 @@ disqus: #shortname
 gitalk:
   clientID: 4dc4b2c7c69bb80e7e6e
   clientSecret: af399b13fe2f430cc65ab7954832ef97c0b835ee
-  repo: unknownx1.github.io
+  repo: https://unknownx1.github.io/
   owner: unknownx1
   proxy: 
 
